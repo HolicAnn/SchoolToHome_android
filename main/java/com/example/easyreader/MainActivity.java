@@ -33,32 +33,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
                 StrictMode.setThreadPolicy(policy);
-                /*HttpGet httpget = new HttpGet("http://123.56.151.219/tree/tree");
-                HttpClient httpclient = new DefaultHttpClient();
-                InputStream inputStream = null;
-                try {
-                    httpResponse = httpclient.execute(httpget);
-                    httpEntity = httpResponse.getEntity();
-                    inputStream = httpEntity.getContent();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                    String result = "";
-                    String line = "";
-                    while ((line = reader.readLine()) != null) {
-                        result = result + line;
-                    }
-                    System.out.println("--------------------------------------------------------------------------");
-                    System.out.println(result);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        inputStream.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }*/
+
                 try {
                     url = new URL("http://123.56.151.219/tree/tree");
                     urlConnection = (HttpURLConnection) url.openConnection();
@@ -75,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                         result = result + line;
                     }
                     System.out.println("--------------------------------------------------------------------------");
-                    System.out.println(result);
                     br.close();
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
