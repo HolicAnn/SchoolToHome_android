@@ -1,81 +1,62 @@
 package com.example.easyreader;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-
-import static java.net.Proxy.Type.HTTP;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button requestbutton = null;
+    private HttpResponse httpResponse = null;
+    private HttpEntity httpEntity = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String msg = "";
-        String urlStr = "http://123.56.151.219/tree/tree";
-        try {
-            URL url = new URL(urlStr);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(6000);
-            InputStream in = conn.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                if (msg == null) {
-                    msg = line;
-                } else {
-                    msg += line;
+        requestbutton = (Button) findViewById(R.id.requestbutton);
+        requestbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HttpGet httpget = new HttpGet("http://www.baidu.com");//("http://123.56.151.219/tree/tree");
+                HttpClient httpclient = new DefaultHttpClient();
+                InputStream inputStream = null;
+                try {
+                    httpResponse = httpclient.execute(httpget);
+                    httpEntity = httpResponse.getEntity();
+                    inputStream = httpEntity.getContent();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    String result = "";
+                    String line = "";
+                    while ((line = reader.readLine()) != null) {
+                        result = result + line;
+                    }
+                    System.out.println("--------------------------------------------------------------------------");
+                    System.out.println(result);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }finally {
+                    try{
+                        inputStream.close();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             }
-            reader.close();
-            in.close();//关闭数据流
-            conn.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("123----------------------------------------------------------------------");
-        System.out.println(msg);
+        });
 
-
-        /*
-        String strResult = "";
-        String strUrlPath = "http://123.56.151.219/tree/tree";
-        try {
-            URL url = new URL(strUrlPath);
-            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setUseCaches(false);
-            conn.setConnectTimeout(10000);
-            conn.setReadTimeout(10000);
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-            StringBuffer buffer = new StringBuffer();
-            String line = "";
-            while ((line = in.readLine()) != null){
-                buffer.append(line);
-            }
-            strResult = buffer.toString();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(strResult);
-        */
     }
 }
