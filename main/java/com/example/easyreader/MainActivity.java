@@ -17,8 +17,6 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private Button requestbutton = null;
-    //private HttpResponse httpResponse = null;
-    //private HttpEntity httpEntity = null;
     URL url;
     private HttpURLConnection urlConnection = null;
 
