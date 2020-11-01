@@ -1,7 +1,6 @@
 package com.example.easyreader;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,31 +31,34 @@ public class MainActivity extends AppCompatActivity {
         requestbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-                StrictMode.setThreadPolicy(policy);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            url = new URL("http://123.56.151.219/tree/tree");
+                            urlConnection = (HttpURLConnection) url.openConnection();
 
-                try {
-                    url = new URL("http://123.56.151.219/tree/tree");
-                    urlConnection = (HttpURLConnection) url.openConnection();
+                            InputStream in = urlConnection.getInputStream();
 
-                    InputStream in = urlConnection.getInputStream();
+                            InputStreamReader isw = new InputStreamReader(in);
 
-                    InputStreamReader isw = new InputStreamReader(in);
-
-                    BufferedReader br = new BufferedReader(isw);
-                    StringBuilder sb = new StringBuilder();
-                    String result = "";
-                    String line = "";
-                    while ((line = br.readLine()) != null) {
-                        result = result + line;
+                            BufferedReader br = new BufferedReader(isw);
+                            StringBuilder sb = new StringBuilder();
+                            String result = "";
+                            String line = "";
+                            while ((line = br.readLine()) != null) {
+                                result = result + line;
+                            }
+                            System.out.println("--------------------------------------------------------------------------");
+                            System.out.println(result);
+                            br.close();
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    System.out.println("--------------------------------------------------------------------------");
-                    br.close();
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                }).start();
             }
         });
 
