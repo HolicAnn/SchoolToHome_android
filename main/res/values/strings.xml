@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">EasyReader</string>
+    <string name="app_name">家校通</string>
     <string name="memo">简介</string>
-    <string name="bookshelf">书架</string>
-    <string name="onlinestore">在线商城</string>
-    <string name="my">设置</string>
+    <string name="bookshelf">首页</string>
+    <string name="onlinestore">活动</string>
+    <string name="my">我的</string>
 
 
 

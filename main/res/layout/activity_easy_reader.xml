@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/pic4"
+    android:background="@mipmap/pic7"
     tools:context="com.example.easyreader.EasyReader">
 
     <FrameLayout
@@ -24,7 +24,8 @@
     <RadioGroup
         android:id="@+id/MyRadioGroup"
         android:layout_width="0dp"
-        android:layout_height="68dp"
+        android:layout_height="58dp"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,42 +36,42 @@
 
         <RadioButton
             android:id="@+id/rbbookShelf"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="@string/bookshelf"
             android:background="@drawable/btn_round_2"
-            android:layout_marginHorizontal="2dp"
-            android:textSize="24sp" />
+            android:drawableTop="@drawable/home_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@drawable/selector_tab_text" />
 
         <RadioButton
             android:id="@+id/rbonLineStore"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="@string/onlinestore"
             android:background="@drawable/btn_round_2"
-            android:layout_marginHorizontal="2dp"
-            android:textSize="24sp" />
+            android:drawableTop="@drawable/activity_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@drawable/selector_tab_text" />
 
         <RadioButton
             android:id="@+id/rbmyInfoAndSetting"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="@string/my"
             android:background="@drawable/btn_round_2"
-            android:layout_marginHorizontal="2dp"
-            android:textSize="24sp" />
+            android:drawableTop="@drawable/my_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@drawable/selector_tab_text" />
 
         <!--<RadioButton
             android:id="@+id/rbProfile"
