@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = null;
-                intent = new Intent(MainActivity.this, JiaXiaoTong.class);
+                intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
                 MainActivity.this.finish();
             }

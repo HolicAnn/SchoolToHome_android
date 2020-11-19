@@ -13,8 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".About"
-            android:theme="@style/AboutTheme"></activity>
+        <activity android:name=".Login"></activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".About"
+            android:theme="@style/AboutTheme" />
         <activity android:name=".JiaXiaoTong" />
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity">
