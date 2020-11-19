@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import android.webkit.WebViewClient;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +25,9 @@ public class HomePageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private WebView webView;
+
 
     public HomePageFragment() {
         // Required empty public constructor
@@ -60,10 +66,28 @@ public class HomePageFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
-    public void setMenuVisibility(boolean menuVisible){
+
+    public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
-        if(this.getView()!=null){
-            this.getView().setVisibility(menuVisible?View.VISIBLE:View.GONE);
+        if (this.getView() != null) {
+            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initHomePage();
+    }
+
+    public void initHomePage() {
+
+        webView = getView().findViewById(R.id.webview);
+        webView.loadUrl("https://www.xuexi.cn/index.html");
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setBuiltInZoomControls(true);
+
+
     }
 }

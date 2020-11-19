@@ -1,5 +1,6 @@
 package com.example.easyreader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,10 +91,12 @@ public class MyInfoAndSettingFragment extends Fragment {
 
             }
         });
-        tx4.setOnClickListener(new View.OnClickListener() {
+        tx4.setOnClickListener(new View.OnClickListener() {//关于
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(getActivity(),About.class);
+                //intent.setClass();
+                startActivity(intent);
             }
         });
         tx5.setOnClickListener(new View.OnClickListener() {

@@ -19,7 +19,7 @@ public class JiaXiaoTong extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easy_reader);
+        setContentView(R.layout.activity_jiaxiaotong);
         initView();
 
 
