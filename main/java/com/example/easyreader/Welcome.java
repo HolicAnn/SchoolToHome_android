@@ -42,7 +42,7 @@ public class Welcome extends AppCompatActivity {
         btn2homepage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Welcome.this,EasyReader.class);
+                Intent intent=new Intent(Welcome.this, JiaXiaoTong.class);
                 startActivity(intent);
                 Welcome.this.finish();
             }

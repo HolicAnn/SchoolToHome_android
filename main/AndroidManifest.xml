@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EasyReader"></activity>
+        <activity android:name=".JiaXiaoTong"></activity>
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity">
             <intent-filter>

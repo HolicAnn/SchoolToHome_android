@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class EasyReader extends AppCompatActivity {
+public class JiaXiaoTong extends AppCompatActivity {
 
     private FrameLayout homeContent;
     private RadioGroup radioGroup;
@@ -62,16 +62,16 @@ public class EasyReader extends AppCompatActivity {
                     Fragment fragment=null;
                     switch(i){
                         case 0:
-                            fragment=new BookShelfFragment();
+                            fragment=new HomePageFragment();
                             break;
                         case 1:
-                            fragment=new OnlineStoreFragment();
+                            fragment=new ActivityFragment();
                             break;
                         case 2:
                             fragment=new MyInfoAndSettingFragment();
                             break;
                         default:
-                            fragment=new BookShelfFragment();
+                            fragment=new HomePageFragment();
                             break;
 
                     }
