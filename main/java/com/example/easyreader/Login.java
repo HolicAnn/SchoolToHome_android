@@ -57,8 +57,6 @@ public class Login extends AppCompatActivity {
                         try {
                             url = new URL(uurl);
                             HttpURLConnection conn = null;
-
-
                             //url = new URL("http://123.56.151.219:8888/user/user/login?   username=13212405683   &password=123123");
                             conn = (HttpURLConnection) url.openConnection();
                             conn.setDoOutput(true);
@@ -90,8 +88,6 @@ public class Login extends AppCompatActivity {
                                 System.out.println("--------------------------------------------------------------------------");
                                 System.out.println(result);
                                 br.close();
-
-
                             }
                             else
                             {
