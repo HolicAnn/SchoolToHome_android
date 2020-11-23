@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.TestLooperManager;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +32,12 @@ public class Login extends AppCompatActivity {
     private TextView status;
     private String uurl;
     private URL url;
+    private HttpURLConnection urlConnection = null;
+    private Handler mHandler=new Handler(){
+        public void handleMessage(Message msg){
+            status.setText(Html.fromHtml(msg.obj.toString()));
+        };
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +56,10 @@ public class Login extends AppCompatActivity {
                 final String account = login_account.getText().toString();
                 final String password = login_password.getText().toString();
                 //System.out.println(account+password);
-                uurl = new String("http://123.56.151.219:8888/user/user/login");
+                uurl = new String("http://192.168.2.130:3000/user/user/login?username=");
+                uurl+=account;
+                uurl+="&password=";
+                uurl+=password;
                 //uurl ="http://123.56.151.219:8888/user/user/login?username="+account+"&password="+password;
                 //status.setText(uurl);
 
@@ -55,54 +67,31 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
+                            Message msg = new Message();
                             url = new URL(uurl);
-                            HttpURLConnection conn = null;
-                            //url = new URL("http://123.56.151.219:8888/user/user/login?   username=13212405683   &password=123123");
-                            conn = (HttpURLConnection) url.openConnection();
-                            conn.setDoOutput(true);
-                            conn.setConnectTimeout(5000);
-                            conn.setRequestMethod("POST");
-                            String data=":username="+account+"&password="+password;
-                            conn.setRequestProperty("Content-Type", "aapplication/json");
-                            conn.setRequestProperty("Content-Length", data.length()+"");
-                            OutputStream os=conn.getOutputStream();
-                            os.write(data.getBytes());
-
-                            int code=conn.getResponseCode();
-                            if(code==200)
-                            {
-
-                                //请求成功
-                                System.out.println("Connect Succeed!");
-                                InputStream in = conn.getInputStream();
-
-                                InputStreamReader isw = new InputStreamReader(in);
-
-                                BufferedReader br = new BufferedReader(isw);
-                                StringBuilder sb = new StringBuilder();
-                                String result = "";
-                                String line = "";
-                                while ((line = br.readLine()) != null) {
-                                    result = result + line;
-                                }
-                                System.out.println("--------------------------------------------------------------------------");
-                                System.out.println(result);
-                                br.close();
+                            urlConnection = (HttpURLConnection) url.openConnection();
+                            InputStream in = urlConnection.getInputStream();
+                            InputStreamReader isw = new InputStreamReader(in);
+                            BufferedReader br = new BufferedReader(isw);
+                            StringBuilder sb = new StringBuilder();
+                            String result = "";
+                            String line = "";
+                            while ((line = br.readLine()) != null) {
+                                result = result + line;
                             }
-                            else
-                            {
-                                System.out.println("Connect Failed!");
-                            }
-
-
+                            System.out.println("--------------------------------------------------------------------------");
+                            System.out.println(result);
+                            br.close();
+                            JsonUtils_login jsonUtils_login=new JsonUtils_login();
+                            msg.obj=jsonUtils_login.parseLoginStateFromJson(result);
+                            mHandler.sendMessage(msg);
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
-                        }catch(IOException e1){
-                            e1.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     }
                 }).start();
-
             }
         });
     }
