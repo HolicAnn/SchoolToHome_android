@@ -2,6 +2,7 @@ package com.example.easyreader;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = null;
-                intent = new Intent(MainActivity.this, Register.class);
+                intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
                 MainActivity.this.finish();
             }
