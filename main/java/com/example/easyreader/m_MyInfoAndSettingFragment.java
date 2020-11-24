@@ -15,17 +15,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MyInfoAndSettingFragment#newInstance} factory method to
+ * Use the {@link m_MyInfoAndSettingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyInfoAndSettingFragment extends Fragment {
+public class m_MyInfoAndSettingFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +38,7 @@ public class MyInfoAndSettingFragment extends Fragment {
     private TextView tx1,tx2,tx3,tx4,tx5;
     private TextClock mTextClock;
 
-    public MyInfoAndSettingFragment() {
+    public m_MyInfoAndSettingFragment() {
         // Required empty public constructor
     }
 
@@ -49,11 +48,11 @@ public class MyInfoAndSettingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MyInfoAndSettingFragment.
+     * @return A new instance of fragment m_MyInfoAndSettingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MyInfoAndSettingFragment newInstance(String param1, String param2) {
-        MyInfoAndSettingFragment fragment = new MyInfoAndSettingFragment();
+    public static m_MyInfoAndSettingFragment newInstance(String param1, String param2) {
+        m_MyInfoAndSettingFragment fragment = new m_MyInfoAndSettingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

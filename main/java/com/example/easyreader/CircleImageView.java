@@ -1,6 +1,6 @@
 package com.example.easyreader;
 
-//import edu.njupt.zhb.main.R;
+//实现圆形头像
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
