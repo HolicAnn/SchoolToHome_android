@@ -4,7 +4,6 @@
     package="com.example.easyreader">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,10 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-
-
-        <activity
-            android:name=".Register" />
+        <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity
             android:name=".About"
@@ -28,6 +24,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
