@@ -30,8 +30,7 @@ public class h_HomePageFragment extends Fragment {
     private String mParam2;
 
     private WebView webView;
-    private MyImageButton ib1,ib2,ib3,ib4;
-    private ImageButton ib5,ib6,ib7,ib8;
+    private MyImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
 
     public h_HomePageFragment() {
         // Required empty public constructor
@@ -139,17 +138,9 @@ public class h_HomePageFragment extends Fragment {
     public void initHomePage() {
 
         ib1=getView().findViewById(R.id.imageButton);
-        //ib1.setText("课表");
-        //ib1.setColor(Color.WHITE);
         ib2=getView().findViewById(R.id.imageButton2);
-        //ib2.setText("通知");
-        //ib2.setColor(Color.WHITE);
         ib3=getView().findViewById(R.id.imageButton3);
-        //ib3.setText("作业");
-        //ib3.setColor(Color.WHITE);
         ib4=getView().findViewById(R.id.imageButton4);
-        //ib4.setText("校内新闻");
-        //ib4.setColor(Color.WHITE);
         ib5=getView().findViewById(R.id.imageButton5);
         ib6=getView().findViewById(R.id.imageButton6);
         ib7=getView().findViewById(R.id.imageButton7);

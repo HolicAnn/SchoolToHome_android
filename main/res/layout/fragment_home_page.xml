@@ -70,8 +70,8 @@
                 android:visibility="visible"
                 android:tooltipText="查看课表"
                 android:background="#00000000"
-                android:text="登录"
-                android:textColor="#cc0000"/>
+                android:text="课表"
+                android:textColor="@color/white"/>
 
             <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton2"
@@ -81,8 +81,8 @@
                 android:src="@mipmap/notice"
                 android:tooltipText="查看通知"
                 android:background="#00000000"
-                android:text="登录"
-                android:textColor="#cc0000"/>
+                android:text="通知"
+                android:textColor="@color/white"/>
 
             <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton3"
@@ -92,8 +92,8 @@
                 android:src="@mipmap/homework"
                 android:tooltipText="提交作业"
                 android:background="#00000000"
-                android:text="登录"
-                android:textColor="#cc0000"/>
+                android:text="作业"
+                android:textColor="@color/white"/>
 
             <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton4"
@@ -103,8 +103,8 @@
                 android:src="@mipmap/news"
                 android:tooltipText="校内新闻"
                 android:background="#00000000"
-                android:text="登录"
-                android:textColor="#cc0000"/>
+                android:text="新闻"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <LinearLayout
@@ -113,41 +113,49 @@
             android:orientation="horizontal"
             android:layout_marginHorizontal="2dp">
 
-            <ImageButton
+            <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/health_report"
                 android:tooltipText="健康申报"
-                android:background="#00000000"/>
+                android:background="#00000000"
+                android:text="健康申报"
+                android:textColor="@color/white"/>
 
-            <ImageButton
+            <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/signin"
                 android:tooltipText="打卡签到"
-                android:background="#00000000"/>
+                android:background="#00000000"
+                android:text="打卡签到"
+                android:textColor="@color/white"/>
 
-            <ImageButton
+            <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/askforleave"
                 android:tooltipText="请假"
-                android:background="#00000000"/>
+                android:background="#00000000"
+                android:text="请假"
+                android:textColor="@color/white"/>
 
-            <ImageButton
+            <com.example.easyreader.MyImageButton
                 android:id="@+id/imageButton8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/contact"
                 android:tooltipText="联系教师"
-                android:background="#00000000"/>
+                android:background="#00000000"
+                android:text="联系教师"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <WebView
