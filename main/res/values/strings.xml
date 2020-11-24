@@ -4,6 +4,7 @@
     <string name="bookshelf">首页</string>
     <string name="onlinestore">活动</string>
     <string name="my">我的</string>
+    <string name="Server_IP_Port">http://192.168.2.130:3000</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

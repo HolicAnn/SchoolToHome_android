@@ -66,29 +66,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon"
-                android:visibility="visible" />
+                android:src="@mipmap/class_schedule"
+                android:visibility="visible"
+                android:tooltipText="查看课表"/>
 
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/notice"
+                android:tooltipText="查看通知"/>
 
             <ImageButton
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/homework"
+                android:tooltipText="提交作业"/>
 
             <ImageButton
                 android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/news"
+                android:tooltipText="校内新闻"/>
         </LinearLayout>
 
         <LinearLayout
@@ -102,28 +106,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/health_report"
+                android:tooltipText="健康申报"/>
 
             <ImageButton
                 android:id="@+id/imageButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/signin"
+                android:tooltipText="打卡签到"/>
 
             <ImageButton
                 android:id="@+id/imageButton7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/askforleave"
+                android:tooltipText="请假"/>
 
             <ImageButton
                 android:id="@+id/imageButton8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:mipmap/sym_def_app_icon" />
+                android:src="@mipmap/contact"
+                android:tooltipText="联系教师"/>
         </LinearLayout>
 
         <WebView

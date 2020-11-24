@@ -9,6 +9,8 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.webkit.WebViewClient;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +29,8 @@ public class HomePageFragment extends Fragment {
     private String mParam2;
 
     private WebView webView;
+
+    private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
 
 
     public HomePageFragment() {
@@ -77,15 +81,78 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         initHomePage();
+
+        ib1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能1", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能2", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能3", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能4", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能5", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能6", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能7", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "这是功能8", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     public void initHomePage() {
 
+        ib1=getView().findViewById(R.id.imageButton);
+        ib2=getView().findViewById(R.id.imageButton2);
+        ib3=getView().findViewById(R.id.imageButton3);
+        ib4=getView().findViewById(R.id.imageButton4);
+        ib5=getView().findViewById(R.id.imageButton5);
+        ib6=getView().findViewById(R.id.imageButton6);
+        ib7=getView().findViewById(R.id.imageButton7);
+        ib8=getView().findViewById(R.id.imageButton8);
+
         webView = getView().findViewById(R.id.webview);
-        webView.loadUrl("https://www.xuexi.cn/index.html");
+        webView.loadUrl("http://news.cyol.com/node_67071.htm");
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(true);
 
 

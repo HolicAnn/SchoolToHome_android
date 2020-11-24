@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -35,7 +35,14 @@ public class Login extends AppCompatActivity {
     private HttpURLConnection urlConnection = null;
     private Handler mHandler=new Handler(){
         public void handleMessage(Message msg){
-            status.setText(Html.fromHtml(msg.obj.toString()));
+            //status.setText(Html.fromHtml(msg.obj.toString()));
+            Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            if(msg.obj.toString().equals("登录成功")){
+                Intent intent = null;
+                intent = new Intent(Login.this, JiaXiaoTong.class);
+                startActivity(intent);
+                Login.this.finish();
+            }
         };
     };
 
@@ -44,10 +51,19 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        Intent intent =getIntent();
+        String msg1=intent.getStringExtra("phoneNumber");
+        String msg2=intent.getStringExtra("passWord");
+        //textView.setText(msg);
         btnLogin = findViewById(R.id.button_login);
         login_account = findViewById(R.id.login_account);
         login_password = findViewById(R.id.login_password);
-        status = findViewById(R.id.textView5);
+        if(msg1!=null&&msg2!=null){
+            login_account.setText(msg1);
+            login_password.setText(msg2);
+        }
+        //status = findViewById(R.id.textView5);
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +72,8 @@ public class Login extends AppCompatActivity {
                 final String account = login_account.getText().toString();
                 final String password = login_password.getText().toString();
                 //System.out.println(account+password);
-                uurl = new String("http://192.168.2.130:3000/user/user/login?username=");
+                uurl = getString(R.string.Server_IP_Port);
+                uurl+="/user/user/login?username=";
                 uurl+=account;
                 uurl+="&password=";
                 uurl+=password;

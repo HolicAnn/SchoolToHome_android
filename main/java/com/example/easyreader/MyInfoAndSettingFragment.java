@@ -2,6 +2,7 @@ package com.example.easyreader;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,15 @@ import android.widget.TextClock;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +68,7 @@ public class MyInfoAndSettingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -72,6 +83,40 @@ public class MyInfoAndSettingFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         initSettingItems();
+        //uurl ="http://123.56.151.219:8888/user/user/login?username="+account+"&password="+password;
+        //status.setText(uurl);
+        //System.out.println("--------------------------------------------------------------------------");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Message msg = new Message();
+                    String uurl=getString(R.string.Server_IP_Port)+"/user/user/detail";
+                    URL url = new URL(uurl);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = urlConnection.getInputStream();
+                    InputStreamReader isw = new InputStreamReader(in);
+                    BufferedReader br = new BufferedReader(isw);
+                    StringBuilder sb = new StringBuilder();
+                    String result = "";
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        result = result + line;
+                    }
+                    System.out.println("--------------------------------------------------------------------------");
+                    System.out.println(result);
+                    br.close();
+                    //JsonUtils_login jsonUtils_login=new JsonUtils_login();
+                    //msg.obj=jsonUtils_login.parseLoginStateFromJson(result);
+                    //mHandler.sendMessage(msg);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
         tx1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

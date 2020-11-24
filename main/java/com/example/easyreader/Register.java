@@ -1,5 +1,6 @@
 package com.example.easyreader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,7 +31,16 @@ public class Register extends AppCompatActivity {
     private HttpURLConnection urlConnection = null;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
-            status.setText(Html.fromHtml(msg.obj.toString()));
+            //status.setText(Html.fromHtml(msg.obj.toString()));
+            Toast.makeText(Register.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            if(msg.obj.toString().equals("注册成功")){
+                Intent intent = null;
+                intent = new Intent(Register.this, Login.class);
+                intent.putExtra("phoneNumber", register_phonenumber.getText().toString());
+                intent.putExtra("passWord", register_password.getText().toString());
+                startActivity(intent);
+                Register.this.finish();
+            }
         };
     };
 
@@ -53,7 +64,9 @@ public class Register extends AppCompatActivity {
                 final String password=register_password.getText().toString();
                 final String verifycode=register_verifycode.getText().toString();
                 final String phoneNumber=register_phonenumber.getText().toString();
-                uurl = new String("http://192.168.2.130:3000/user/user/register?phone=");
+                uurl = getString(R.string.Server_IP_Port);
+                uurl+="/user/user/register?phone=";
+                //uurl = new String("http://192.168.2.130:3000/user/user/register?phone=");
                 uurl+=phoneNumber;
                 uurl+="&password=";
                 uurl+=password;
