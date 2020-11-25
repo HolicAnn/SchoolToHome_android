@@ -30,7 +30,7 @@ public class h_HomePageFragment extends Fragment {
     private String mParam2;
 
     private WebView webView;
-    private MyImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
+    private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
 
     public h_HomePageFragment() {
         // Required empty public constructor
