@@ -33,7 +33,7 @@ public class MainActivity_former extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            url = new URL("http://123.56.151.219:8888/user/user/login?   username=13212405683   &password=123123");
+                            url = new URL("http://localhost:3000/user/user/login?username=13212405683&password=123123");
                             urlConnection = (HttpURLConnection) url.openConnection();
 
                             InputStream in = urlConnection.getInputStream();

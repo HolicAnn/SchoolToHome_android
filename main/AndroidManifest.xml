@@ -17,13 +17,13 @@
         android:usesCleartextTraffic="true">
 
 
-        <activity
-            android:name=".Register" />
+        <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity
             android:name=".About"
             android:theme="@style/AboutTheme" />
         <activity android:name=".JiaXiaoTong" />
+        <activity android:name=".learning" />
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity">
             <intent-filter>
