@@ -1,5 +1,6 @@
 package com.example.easyreader;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,10 @@ import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomePageFragment#newInstance} factory method to
+ * Use the {@link h_HomePageFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomePageFragment extends Fragment {
+public class h_HomePageFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,11 +30,9 @@ public class HomePageFragment extends Fragment {
     private String mParam2;
 
     private WebView webView;
-
     private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
 
-
-    public HomePageFragment() {
+    public h_HomePageFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +42,11 @@ public class HomePageFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomePageFragment.
+     * @return A new instance of fragment h_HomePageFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomePageFragment newInstance(String param1, String param2) {
-        HomePageFragment fragment = new HomePageFragment();
+    public static h_HomePageFragment newInstance(String param1, String param2) {
+        h_HomePageFragment fragment = new h_HomePageFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

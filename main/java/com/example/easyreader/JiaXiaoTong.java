@@ -1,7 +1,6 @@
 package com.example.easyreader;
 
 import android.os.Bundle;
-import android.os.Message;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -10,14 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class JiaXiaoTong extends AppCompatActivity {
 
@@ -70,16 +61,16 @@ public class JiaXiaoTong extends AppCompatActivity {
                     Fragment fragment=null;
                     switch(i){
                         case 0:
-                            fragment=new HomePageFragment();
+                            fragment=new h_HomePageFragment();
                             break;
                         case 1:
                             fragment=new ActivityFragment();
                             break;
                         case 2:
-                            fragment=new MyInfoAndSettingFragment();
+                            fragment=new m_MyInfoAndSettingFragment();
                             break;
                         default:
-                            fragment=new HomePageFragment();
+                            fragment=new h_HomePageFragment();
                             break;
 
                     }
