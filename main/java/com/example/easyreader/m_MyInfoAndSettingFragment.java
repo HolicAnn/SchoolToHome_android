@@ -92,6 +92,8 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             public void run() {
                 try {
                     Message msg = new Message();
+
+                    //写入共享变量
                     Context ctx = getActivity();
                     SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
                     SharedPreferences.Editor editor = share.edit();
