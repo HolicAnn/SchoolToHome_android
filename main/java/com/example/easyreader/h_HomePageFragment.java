@@ -1,7 +1,13 @@
 package com.example.easyreader;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +18,14 @@ import androidx.fragment.app.Fragment;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +45,11 @@ public class h_HomePageFragment extends Fragment {
 
     private WebView webView;
     private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
+//    private Handler mHandler1 = new Handler() {
+//        public void handleMessage(Message msg) {
+//            String str=msg.obj.toString();
+//        };
+//    };
 
     public h_HomePageFragment() {
         // Required empty public constructor
@@ -128,7 +147,8 @@ public class h_HomePageFragment extends Fragment {
         ib8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "这是功能8", Toast.LENGTH_SHORT).show();
+                callPhone();
+                Toast.makeText(getActivity(), "正在拨打电话...", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -155,5 +175,53 @@ public class h_HomePageFragment extends Fragment {
         webView.getSettings().setBuiltInZoomControls(true);
 
 
+    }
+
+
+    public void callPhone() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    //Message msg=new Message();
+                    Context ctx = getActivity();
+                    SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+
+                    String accStr=share.getString("data_id","");
+                    //System.out.println(accStr);
+
+                    String uurl=getString(R.string.Server_IP_Port)+"/user/student/get_teacher_phone"+accStr;
+                    URL url = new URL(uurl);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = urlConnection.getInputStream();
+                    InputStreamReader isw = new InputStreamReader(in);
+                    BufferedReader br = new BufferedReader(isw);
+                    StringBuilder sb = new StringBuilder();
+                    String result = "";
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        result = result + line;
+                    }
+                    System.out.println("--------------------------------------------------------------------------");
+                    System.out.println(result);
+                    br.close();
+                    JsonUtils_login jsonUtils_login = new JsonUtils_login();
+                    Login_state login_state = jsonUtils_login.parseLoginStateFromJson(result);
+                    String phoneNum=login_state.getData();
+                    System.out.println("phoneNum:"+phoneNum);
+                    //mHandler1.sendMessage(msg);
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Uri data = Uri.parse("tel:" + phoneNum);
+                    intent.setData(data);
+                    startActivity(intent);
+                }
+                catch (MalformedURLException e){
+                    e.printStackTrace();
+                }
+                catch (IOException ee){
+                    ee.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

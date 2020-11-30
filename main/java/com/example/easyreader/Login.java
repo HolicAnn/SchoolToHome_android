@@ -62,8 +62,30 @@ public class Login extends AppCompatActivity {
         login_account = findViewById(R.id.login_account);
         login_password = findViewById(R.id.login_password);
         if (msg1 != null && msg2 != null) {
+            System.out.println("Get from register activity");
             login_account.setText(msg1);
             login_password.setText(msg2);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    btnLogin.performClick();
+                }
+            }).start();
+        }
+        Context ctx = Login.this;
+        SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+        msg1=share.getString("username","");
+        msg2=share.getString("password","");
+        if (msg1 != null && msg2 != null) {
+            System.out.println("Get from last login");
+            login_account.setText(msg1);
+            login_password.setText(msg2);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    btnLogin.performClick();
+                }
+            }).start();
         }
         //status = findViewById(R.id.textView5);
 
@@ -110,6 +132,8 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = share.edit();
                             String str = "?data_id=" + jsonUtils_login.parseLoginStateFromJson(result).getData();
                             editor.putString("data_id", str);
+                            editor.putString("username", account);
+                            editor.putString("password", password);
                             editor.commit();
 
                         } catch (MalformedURLException e) {
