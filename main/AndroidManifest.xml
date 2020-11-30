@@ -14,11 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 21316137ba43506fa43adcd29ecab92ef0c5807c
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity

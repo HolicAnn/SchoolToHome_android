@@ -2,15 +2,10 @@ package com.example.easyreader;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,12 +14,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,24 +25,102 @@ import java.util.Map;
 
 public class learning extends AppCompatActivity {
 
-    private String[] title = {"心有所信，方能行远", "使社会始终充满生机活力", "聚天下英才而用之", "一国两制”是完全行得通、办得到、得人心的"};
+    private String[] Title = new String[11];// = {"心有所信，方能行远", "使社会始终充满生机活力", "聚天下英才而用之", "一国两制”是完全行得通、办得到、得人心的"};
 
-    private String[] name = {"\uD83C\uDDE8\uD83C\uDDF3青年大学习特辑", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习"};
+    private String[] Name = new String[11];// = {"\uD83C\uDDE8\uD83C\uDDF3青年大学习特辑", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习"};
 
-    private String[] desc = {"2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21"};
+    private String[] Time = new String[11];// = {"2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21"};
 
-    private int[] imageids = {R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1};
+    private String[] Imageids = new String[11];// = {R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1};
 
     private ListView lt1;
 
     public ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();//
 
-    private Context context;//
-
-    private Mybaseadapter list_item;//
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getJson();
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.h_learning);
+        List<Map<String, Object>> listitem = new ArrayList<Map<String, Object>>();
+        for (int i = 0; i < Name.length; i++) {
+            Map<String, Object> item = new HashMap<String, Object>();
+            item.put("title", Title[i]);
+            item.put("images", Imageids[i]);
+            item.put("name", Name[i]);
+            item.put("create_time", Time[i]);
+            System.out.println(Time[i]);
+            listitem.add(item);
+        }
+        SimpleAdapter simplead = new SimpleAdapter(this, listitem,
+                R.layout.h_learning_item, new String[]{"title", "name", "images", "create_time"},
+                new int[]{R.id.title, R.id.name, R.id.images, R.id.create_time});
+        lt1 = (ListView) findViewById(R.id.lt1);
+        lt1.setAdapter(simplead);
+    }
+
+    private void getJson() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://192.168.2.130:3000/user/student/learning_list");
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = urlConnection.getInputStream();
+                    InputStreamReader isw = new InputStreamReader(in);
+                    BufferedReader br = new BufferedReader(isw);
+                    StringBuilder sb = new StringBuilder();
+                    String result = "";
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        result = result + line;
+                    }
+                    br.close();
+                    System.out.println("--------------------------------------------------------------------------");
+                    try {
+                        JSONObject jsonObjectALL = new JSONObject(result);
+                        JSONArray jsonArray = jsonObjectALL.getJSONArray("list");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String _id = jsonObject.optString("_id", null);
+                            //System.out.println(_id);
+                            String name = jsonObject.optString("name", null);
+                            //System.out.println(name);
+                            Name[i] = name;
+                            String title = jsonObject.optString("title", null);
+                            System.out.println(title);
+                            Title[i] = title;
+                            String cover = jsonObject.optString("cover", null);
+                            //System.out.println(cover);
+                            Imageids[i] = cover;
+                            String video = jsonObject.optString("video", null);
+                            //System.out.println(video);
+                            String QR = jsonObject.optString("QR", null);
+                            //System.out.println(QR);
+                            String created_time = jsonObject.optString("created_time", null);
+                            //System.out.println(created_time);
+                            Time[i] = created_time;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public void test_OnCreate(Bundle savedInstanceState) {
+        String[] title = {"心有所信，方能行远", "使社会始终充满生机活力", "聚天下英才而用之", "一国两制”是完全行得通、办得到、得人心的"};
+        String[] name = {"\uD83C\uDDE8\uD83C\uDDF3青年大学习特辑", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习"};
+        String[] desc = {"2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21"};
+        int[] imageids = {R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.h_learning);
         List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
@@ -64,186 +134,82 @@ public class learning extends AppCompatActivity {
         }
         SimpleAdapter simplead = new SimpleAdapter(this, listems,
                 R.layout.h_learning_item, new String[]{"title", "name", "head", "desc"},
-                new int[]{R.id.title, R.id.name, R.id.head, R.id.desc});
+                new int[]{R.id.title, R.id.name, R.id.images, R.id.create_time});
 
         lt1 = (ListView) findViewById(R.id.lt1);
         lt1.setAdapter(simplead);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    public void getJson_1(String result) throws JSONException {
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            String msg = jsonObject.optString("msg", null);
+            System.out.println(msg);
+            int state = jsonObject.optInt("state", 0);
+            System.out.println(state);
+            String list = jsonObject.optString("list", null);
+            System.out.println(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
+        {
+        "state": 200,
+        "msg": "获取列表成功",
+        "list":"  "
+        }
+        */
     }
 
-    /*
-    super.onCreate(savedInstanceState);
-        setContentView(R.layout.h_learning);
-        List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < name.length; i++) {
-            Map<String, Object> listem = new HashMap<String, Object>();
-            listem.put("title", title[i]);
-            listem.put("head", imageids[i]);
-            listem.put("name", name[i]);
-            listem.put("desc", desc[i]);
-            listems.add(listem);
-        }
-        SimpleAdapter simplead = new SimpleAdapter(this, listems,
-                R.layout.h_learning_item, new String[]{"title", "name", "head", "desc"},
-                new int[]{R.id.title, R.id.name, R.id.head, R.id.desc});
-
-        lt1 = (ListView) findViewById(R.id.lt1);
-        lt1.setAdapter(simplead);
-     */
-
-    private void init() {
-        list.clear();
-        lt1 = (ListView) findViewById(R.id.lt1);
-        list_item = new Mybaseadapter();
-        lt1.setAdapter((ListAdapter) list_item);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    OkHttpClient client = new OkHttpClient();
-                    //服务端访问地址
-                    Request request = new Request
-                            .Builder()
-                            .url("http://120.36.153.174:9080/CargolistApi/select").build();
-                    Response response = client.newCall(request).execute();
-                    //得到服务器返回的数据后，调用parseJSONWithJSONObject进行解析
-                    String responseData = response.body().string();
-                    parseJSONWithJSONObject(responseData);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    public void getJson_2(String result) throws JSONException {
+        try {
+            JSONObject jsonObjectALL = new JSONObject(result);
+            JSONArray jsonArray = jsonObjectALL.getJSONArray("list");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String _id = jsonObject.optString("_id", null);
+                System.out.println(_id);
+                String name = jsonObject.optString("name", null);
+                System.out.println(_id);
+                String title = jsonObject.optString("title", null);
+                System.out.println(_id);
+                String cover = jsonObject.optString("cover", null);
+                System.out.println(_id);
+                String video = jsonObject.optString("video", null);
+                System.out.println(_id);
+                String QR = jsonObject.optString("QR", null);
+                System.out.println(_id);
+                String created_time = jsonObject.optString("created_time", null);
+                System.out.println(_id);
             }
-        }).start();
-    }
-
-    private void parseJSONWithJSONObject(String jsonData) {
-        if (jsonData != null) {
-            try {
-                JSONObject jsonObject = new JSONObject(jsonData);
-
-                //获取数据中的code值，如果是0则正确
-                String resultCode = jsonObject.getString("code");
-                if (resultCode.equals("0")) {
-                    //获取到json数据中里的data内容
-                    JSONArray resultJsonArray = jsonObject.getJSONArray("data");
-                    Log.d("MainActivity", "data+++" + resultJsonArray);
-                    for (int i = 0; i < resultJsonArray.length(); i++) {
-                        //循环遍历，获取json数据中data数组里的内容
-                        JSONObject Object = resultJsonArray.getJSONObject(i);
-                        Map<String, Object> map = new HashMap<String, Object>();
-                        try {
-                            String cargono = Object.getString("cargono");
-                            String variety = Object.getString("variety");
-                            String markno = Object.getString("markno");
-                            String spec = Object.getString("spec");
-                            String kgs = Object.getString("kgs");
-                            String net = Object.getString("net");
-
-                            map.put("cargono", cargono);
-                            map.put("variety", variety);
-                            map.put("markno", markno);
-                            map.put("spec", spec);
-                            map.put("kgs", kgs);
-                            map.put("net", net);
-
-                            //保存到ArrayList集合中
-                            list.add(map);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    handler.sendEmptyMessageDelayed(1, 100);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
+        {
+        "state": 200,
+        "msg": "获取列表成功",
+        "list": [
+            {
+             "_id": "5fb6471e26813c2dc8473dd6",
+            "name": "🇨🇳“青年大学习”特辑",
+            "title": "心有所信，方能行远",
+            "cover": "http://img.cyol.com/img/news/attachement/jpg/site2/20200713/IMG484d7ea271a15446058243.jpg",
+            "video": "http://dxxsv.cyol.com/9dxx11.mp4",
+            "QR": "http://h5.cyol.com/special/daxuexi/9fudanhui11/images/erweima.png",
+            "created_time": "2020-11-19 18:21"
+            },
+            {
+            "_id": "5fb6473d26813c2dc8473dd7",
+            "name": "🇨🇳青年大学习",
+            "title": "使社会始终充满生机活力",
+            "cover": "http://img.cyol.com/img/news/attachement/jpg/site2/20200706/IMG484d7ea271a15440039182.jpg",
+            "video": "http://dxxsv.cyol.com/9dxx10.mp4",
+            "QR": "http://h5.cyol.com/special/daxuexi/9aabgtcgs10/images/erweima.png",
+            "created_time": "2020-11-19 18:21"
             }
+          ]
         }
-    }
-
-    @SuppressLint("HandlerLeak")
-    public Handler handler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    list_item.notifyDataSetChanged();
-                    break;
-            }
-        }
-    };
-
-
-    //listview适配器
-    public class Mybaseadapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return list.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            ViewHolder viewHolder = new ViewHolder();
-
-            if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.view_main, null);
-                viewHolder.Cargono = (TextView) convertView.findViewById(R.id.tvCargono);
-                viewHolder.Variety = (TextView) convertView.findViewById(R.id.tvVariety);
-                viewHolder.Markno = (TextView) convertView.findViewById(R.id.tvMarkno);
-                viewHolder.Spec = (TextView) convertView.findViewById(R.id.tvSpec);
-                viewHolder.Kgs = (TextView) convertView.findViewById(R.id.tvKgs);
-                viewHolder.Net = (TextView) convertView.findViewById(R.id.tvNet);
-
-                convertView.setTag(viewHolder);
-
-            } else {
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-
-            viewHolder.Cargono.setText("钢卷号：" + list.get(position).get("cargono").toString());
-            viewHolder.Variety.setText("品种：" + list.get(position).get("variety").toString());
-            viewHolder.Markno.setText("牌号：" + list.get(position).get("markno").toString());
-            viewHolder.Spec.setText("规格型号：" + list.get(position).get("spec").toString());
-            viewHolder.Kgs.setText("毛重：" + list.get(position).get("kgs").toString());
-            viewHolder.Net.setText("净重：" + list.get(position).get("net").toString());
-
-            return convertView;
-        }
-    }
-
-    final static class ViewHolder {
-        TextView Cargono;
-        TextView Variety;
-        TextView Markno;
-        TextView Spec;
-        TextView Kgs;
-        TextView Net;
-    }
-
-    @Override
-    public void onClick(View view) {
-
+        */
     }
 }
-

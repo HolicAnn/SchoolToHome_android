@@ -9,19 +9,19 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button testBtn=null;
+    private Button testBtn = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        testBtn=findViewById(R.id.testBtn);
+        testBtn = findViewById(R.id.testBtn);
         testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = null;
-                intent = new Intent(MainActivity.this, JiaXiaoTong.class);
+                intent = new Intent(MainActivity.this, learning.class);
                 startActivity(intent);
                 MainActivity.this.finish();
             }
