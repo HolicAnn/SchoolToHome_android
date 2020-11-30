@@ -22,13 +22,28 @@ public class Detail
 
     private int state;
 
-    private String data;
+    public Data data;
 
-    public String getData() {
-        return data;
+    public class Data{
+        private String username;
+
+        public void setUsername(String username){this.username=username;}
+
+        public String getUsername(){return username;}
+
+        public String nickname;
+
+        public void setNickname(String nickname){this.nickname=nickname;}
+
+        public String getNickname(){return nickname;}
+
+        private String role;
+
+        private String password;
+
+        private String created_time;
+
+        private String classesId;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +38,18 @@ public class m_MyInfoAndSettingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView tx1,tx2,tx3,tx4,tx5;
+    private TextView tx1,tx2,tx3,tx4,tx5,nickname;
     private TextClock mTextClock;
+
+    private Handler mHandler1 = new Handler() {
+        public void handleMessage(Message msg) {
+            nickname=getView().findViewById(R.id.nickname);
+            //status.setText(Html.fromHtml(msg.obj.toString()));
+            //Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            String str=msg.obj.toString();
+            nickname.setText(str);
+        };
+    };
 
     public m_MyInfoAndSettingFragment() {
         // Required empty public constructor
@@ -96,9 +107,6 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     //写入共享变量
                     Context ctx = getActivity();
                     SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
-                    SharedPreferences.Editor editor = share.edit();
-                    editor.putString("data_id", "?data_id=5fbce52d29c82964fbb33089");
-                    editor.commit();
 
                     String accStr=share.getString("data_id","");
                     //System.out.println(accStr);
@@ -118,9 +126,12 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     System.out.println("--------------------------------------------------------------------------");
                     System.out.println(result);
                     br.close();
-                    //JsonUtils_login jsonUtils_login=new JsonUtils_login();
-                    //msg.obj=jsonUtils_login.parseLoginStateFromJson(result);
-                    //mHandler.sendMessage(msg);
+                    JsonUtils_detail jsonUtils_detail=new JsonUtils_detail();
+                    Detail detail=jsonUtils_detail.parseDetailFromJson(result);
+                    //Data data=new Detail.data();
+                    msg.obj=detail.data.nickname;
+                    System.out.println("nickname:"+detail.data.nickname);
+                    mHandler1.sendMessage(msg);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
