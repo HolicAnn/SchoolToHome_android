@@ -1,6 +1,8 @@
 package com.example.easyreader;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -90,7 +92,16 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             public void run() {
                 try {
                     Message msg = new Message();
-                    String uurl=getString(R.string.Server_IP_Port)+"/user/user/detail";
+                    Context ctx = getActivity();
+                    SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+                    SharedPreferences.Editor editor = share.edit();
+                    editor.putString("data_id", "?data_id=5fbce52d29c82964fbb33089");
+                    editor.commit();
+
+                    String accStr=share.getString("data_id","");
+                    //System.out.println(accStr);
+
+                    String uurl=getString(R.string.Server_IP_Port)+"/user/user/detail"+accStr;
                     URL url = new URL(uurl);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
