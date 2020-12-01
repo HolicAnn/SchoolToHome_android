@@ -9,8 +9,13 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -21,6 +26,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,8 +46,17 @@ public class m_MyInfoAndSettingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ListView listview;
+
     private TextView tx1,tx2,tx3,tx4,tx5,nickname;
     private TextClock mTextClock;
+
+    Intent intent = new Intent();
+    ArrayList<HashMap<String, Object>> arrayList;
+    int pos = -1;
+    boolean play_flag = false;
+    ListViewAdapter listViewAdapter;
+    ImageView imageView = null;
 
     private Handler mHandler1 = new Handler() {
         public void handleMessage(Message msg) {
@@ -95,6 +112,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         initSettingItems();
+
         //uurl ="http://123.56.151.219:8888/user/user/login?username="+account+"&password="+password;
         //status.setText(uurl);
         //System.out.println("--------------------------------------------------------------------------");
@@ -140,58 +158,98 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             }
         }).start();
 
-        tx1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        tx2.setOnClickListener(new View.OnClickListener() {//背景音乐
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        tx3.setOnClickListener(new View.OnClickListener() {//主题
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
-        tx4.setOnClickListener(new View.OnClickListener() {//关于
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getActivity(),About.class);
-                //intent.setClass();
-                startActivity(intent);
-            }
-        });
-        tx5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        tx1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//        tx2.setOnClickListener(new View.OnClickListener() {//背景音乐
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//        tx3.setOnClickListener(new View.OnClickListener() {//主题
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//            }
+//        });
+//        tx4.setOnClickListener(new View.OnClickListener() {//关于
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(getActivity(),About.class);
+//                //intent.setClass();
+//                startActivity(intent);
+//            }
+//        });
+//        tx5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 
     public void initSettingItems(){
-        tx1=getView().findViewById(R.id.SettingItem1);
-        tx2=getView().findViewById(R.id.SettingItem2);
-        tx3=getView().findViewById(R.id.SettingItem3);
-        tx4=getView().findViewById(R.id.SettingItem4);
-        tx5=getView().findViewById(R.id.SettingItem5);
-        mTextClock = (TextClock)getView().findViewById(R.id.textclock);
-        // 设置12时制显示格式
-        mTextClock.setFormat12Hour("MMMM dd,h:mmaa");
+//        tx1=getView().findViewById(R.id.SettingItem1);
+//        tx2=getView().findViewById(R.id.SettingItem2);
+//        tx3=getView().findViewById(R.id.SettingItem3);
+//        tx4=getView().findViewById(R.id.SettingItem4);
+//        tx5=getView().findViewById(R.id.SettingItem5);
+//        mTextClock = (TextClock)getView().findViewById(R.id.textclock);
+//        // 设置12时制显示格式
+//        mTextClock.setFormat12Hour("MMMM dd,h:mmaa");
 
         // 设置24时制显示格式
         //mTextClock.setFormat24Hour("yyyy-MM-dd hh:mm, EEEE");
+
+        ListView listView = getView().findViewById(R.id.settingList);
+        listViewAdapter = new ListViewAdapter(getActivity(), getData());
+        listView.setAdapter(listViewAdapter);
+        AdapterView.OnItemClickListener listViewListener
+                = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                if (play_flag) {
+                    //stopPlayer(pos);
+                    if (pos != arg2) {
+                        pos = arg2;
+                        Toast.makeText(getActivity(), "msg.obj.toString()", Toast.LENGTH_SHORT).show();
+                        //startPlayer(pos);
+                    }
+                } else {
+                    pos = arg2;
+                    Toast.makeText(getActivity(), "msg.obj.toString()", Toast.LENGTH_SHORT).show();
+                    //startPlayer(pos);
+                }
+            }
+        };
+        listView.setOnItemClickListener(listViewListener);
     }
     public void setMenuVisibility(boolean menuVisible){
         super.setMenuVisibility(menuVisible);
         if(this.getView()!=null){
             this.getView().setVisibility(menuVisible?View.VISIBLE:View.GONE);
         }
+    }
+
+    private ArrayList<HashMap<String, Object>> getData() {
+        arrayList = new ArrayList<HashMap<String, Object>>();
+        HashMap<String, Object> hashMap1 = new HashMap<String, Object>();
+        HashMap<String, Object> hashMap2 = new HashMap<String, Object>();
+        HashMap<String, Object> hashMap3 = new HashMap<String, Object>();
+        hashMap1.put("image", R.mipmap.play);
+        hashMap1.put("itemName", "古画");
+        arrayList.add(hashMap1);
+        hashMap2.put("image", R.mipmap.play);
+        hashMap2.put("itemName", "意浓");
+        arrayList.add(hashMap2);
+        hashMap3.put("image", R.mipmap.play);
+        hashMap3.put("itemName", "爱河");
+        arrayList.add(hashMap3);
+        return arrayList;
     }
 }

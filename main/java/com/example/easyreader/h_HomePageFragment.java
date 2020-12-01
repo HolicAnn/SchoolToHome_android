@@ -105,7 +105,10 @@ public class h_HomePageFragment extends Fragment {
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "这是功能1", Toast.LENGTH_SHORT).show();
+                Intent intent = null;
+                intent = new Intent(getActivity(), h_CheckTable.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), "这是功能1", Toast.LENGTH_SHORT).show();
             }
         });
         ib2.setOnClickListener(new View.OnClickListener() {
