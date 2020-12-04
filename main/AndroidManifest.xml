@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
+        <activity android:name=".h_CheckTable"></activity>
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".learning_detail" />

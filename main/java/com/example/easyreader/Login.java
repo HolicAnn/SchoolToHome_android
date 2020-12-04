@@ -1,18 +1,20 @@
 package com.example.easyreader;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.TestLooperManager;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -33,11 +35,11 @@ public class Login extends AppCompatActivity {
     private String uurl;
     private URL url;
     private HttpURLConnection urlConnection = null;
-    private Handler mHandler=new Handler(){
-        public void handleMessage(Message msg){
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
             //status.setText(Html.fromHtml(msg.obj.toString()));
             Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
-            if(msg.obj.toString().equals("登录成功")){
+            if (msg.obj.toString().equals("登录成功")) {
                 Intent intent = null;
                 intent = new Intent(Login.this, JiaXiaoTong.class);
                 startActivity(intent);
@@ -52,16 +54,38 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        Intent intent =getIntent();
-        String msg1=intent.getStringExtra("phoneNumber");
-        String msg2=intent.getStringExtra("passWord");
+        Intent intent = getIntent();
+        String msg1 = intent.getStringExtra("phoneNumber");
+        String msg2 = intent.getStringExtra("passWord");
         //textView.setText(msg);
         btnLogin = findViewById(R.id.button_login);
         login_account = findViewById(R.id.login_account);
         login_password = findViewById(R.id.login_password);
-        if(msg1!=null&&msg2!=null){
+        if (msg1 != null && msg2 != null) {
+            System.out.println("Get from register activity");
             login_account.setText(msg1);
             login_password.setText(msg2);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    btnLogin.performClick();
+                }
+            }).start();
+        }
+        Context ctx = Login.this;
+        SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+        msg1=share.getString("username","");
+        msg2=share.getString("password","");
+        if (msg1 != null && msg2 != null) {
+            System.out.println("Get from last login");
+            login_account.setText(msg1);
+            login_password.setText(msg2);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    btnLogin.performClick();
+                }
+            }).start();
         }
         //status = findViewById(R.id.textView5);
 
@@ -73,10 +97,10 @@ public class Login extends AppCompatActivity {
                 final String password = login_password.getText().toString();
                 //System.out.println(account+password);
                 uurl = getString(R.string.Server_IP_Port);
-                uurl+="/user/user/login?username=";
-                uurl+=account;
-                uurl+="&password=";
-                uurl+=password;
+                uurl += "/user/user/login?username=";
+                uurl += account;
+                uurl += "&password=";
+                uurl += password;
                 //uurl ="http://123.56.151.219:8888/user/user/login?username="+account+"&password="+password;
                 //status.setText(uurl);
 
@@ -99,9 +123,19 @@ public class Login extends AppCompatActivity {
                             System.out.println("--------------------------------------------------------------------------");
                             System.out.println(result);
                             br.close();
-                            JsonUtils_login jsonUtils_login=new JsonUtils_login();
-                            msg.obj=jsonUtils_login.parseLoginStateFromJson(result);
+                            JsonUtils_login jsonUtils_login = new JsonUtils_login();
+                            msg.obj = jsonUtils_login.parseLoginStateFromJson(result).getMsg();
                             mHandler.sendMessage(msg);
+
+                            Context ctx = Login.this;
+                            SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+                            SharedPreferences.Editor editor = share.edit();
+                            String str = "?data_id=" + jsonUtils_login.parseLoginStateFromJson(result).getData();
+                            editor.putString("data_id", str);
+                            editor.putString("username", account);
+                            editor.putString("password", password);
+                            editor.commit();
+
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
                         } catch (IOException e) {

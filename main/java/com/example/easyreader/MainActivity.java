@@ -1,6 +1,8 @@
 package com.example.easyreader;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +23,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = null;
+<<<<<<< HEAD
                 intent = new Intent(MainActivity.this, learning.class);
+=======
+                intent = new Intent(MainActivity.this, Login.class);
+>>>>>>> c87a871353acef74310bd5e6284c9f55b82a4d23
                 startActivity(intent);
                 MainActivity.this.finish();
             }
