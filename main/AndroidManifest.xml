@@ -16,6 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Register" />
         <activity android:name=".Login" />
+        <activity android:name=".learning_detail" />
         <activity
             android:name=".About"
             android:theme="@style/AboutTheme" />

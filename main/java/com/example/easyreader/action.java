@@ -1,14 +1,11 @@
 package com.example.easyreader;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class learning extends AppCompatActivity {
+public class action extends AppCompatActivity {
 
     private String[] Title = new String[11];
     private String[] Name = new String[11];
@@ -62,7 +59,7 @@ public class learning extends AppCompatActivity {
                 new int[]{R.id.title, R.id.name, R.id.images, R.id.create_time});
         lt1 = (ListView) findViewById(R.id.lt1);
         lt1.setAdapter(simplead);
-        final Intent intent = new Intent(learning.this, learning_detail.class);
+        final Intent intent = new Intent(action.this, learning_detail.class);
 
         lt1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
