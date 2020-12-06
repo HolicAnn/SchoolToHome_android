@@ -15,10 +15,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import butterknife.BindView;
+//import butterknife.BindView;
 
 public class learning_detail extends AppCompatActivity {
-    @BindView(R.id.learning_mevio)
+    //@BindView(R.id.learning_mevio)
     WebView webview;
 
     private String id = "";

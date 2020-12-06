@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextClock;
@@ -48,8 +49,10 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 
     private ListView listview;
 
-    private TextView tx1,tx2,tx3,tx4,tx5,nickname;
+    private TextView tx1, tx2, tx3, tx4, tx5, nickname;
     private TextClock mTextClock;
+
+    private Button loginout;
 
     Intent intent = new Intent();
     ArrayList<HashMap<String, Object>> arrayList;
@@ -60,12 +63,14 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 
     private Handler mHandler1 = new Handler() {
         public void handleMessage(Message msg) {
-            nickname=getView().findViewById(R.id.nickname);
+            nickname = getView().findViewById(R.id.nickname);
             //status.setText(Html.fromHtml(msg.obj.toString()));
             //Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
-            String str=msg.obj.toString();
+            String str = msg.obj.toString();
             nickname.setText(str);
-        };
+        }
+
+        ;
     };
 
     public m_MyInfoAndSettingFragment() {
@@ -124,12 +129,12 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 
                     //写入共享变量
                     Context ctx = getActivity();
-                    SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+                    SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
 
-                    String accStr=share.getString("data_id","");
+                    String accStr = share.getString("data_id", "");
                     //System.out.println(accStr);
 
-                    String uurl=getString(R.string.Server_IP_Port)+"/user/user/detail"+accStr;
+                    String uurl = getString(R.string.Server_IP_Port) + "/user/user/detail" + accStr;
                     URL url = new URL(uurl);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
@@ -144,11 +149,11 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     System.out.println("--------------------------------------------------------------------------");
                     System.out.println(result);
                     br.close();
-                    JsonUtils_detail jsonUtils_detail=new JsonUtils_detail();
-                    Detail detail=jsonUtils_detail.parseDetailFromJson(result);
+                    JsonUtils_detail jsonUtils_detail = new JsonUtils_detail();
+                    Detail detail = jsonUtils_detail.parseDetailFromJson(result);
                     //Data data=new Detail.data();
-                    msg.obj=detail.data.nickname;
-                    System.out.println("nickname:"+detail.data.nickname);
+                    msg.obj = detail.data.nickname;
+                    System.out.println("nickname:" + detail.data.nickname);
                     mHandler1.sendMessage(msg);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -160,7 +165,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 
     }
 
-    public void initSettingItems(){
+    public void initSettingItems() {
 
         ListView listView = getView().findViewById(R.id.settingList);
         listViewAdapter = new ListViewAdapter(getActivity(), getData());
@@ -169,23 +174,50 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                 = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                if (arg2==0) {
+                if (arg2 == 0) {
                     Toast.makeText(getActivity(), "This is Item 0", Toast.LENGTH_SHORT).show();
                 }
-                if (arg2==1) {
+                if (arg2 == 1) {
                     Toast.makeText(getActivity(), "This is Item 1", Toast.LENGTH_SHORT).show();
                 }
-                if (arg2==2) {
+                if (arg2 == 2) {
                     Toast.makeText(getActivity(), "This is Item 2", Toast.LENGTH_SHORT).show();
+                }
+                if (arg2 == 3) {
+                    intent = new Intent(getActivity(), Faq.class);
+                    startActivity(intent);
+                }
+                if (arg2 == 4) {
+                    intent = new Intent(getActivity(), About.class);
+                    startActivity(intent);
                 }
             }
         };
         listView.setOnItemClickListener(listViewListener);
+
+        loginout=getView().findViewById(R.id.LoginOut);
+        loginout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context ctx = getActivity();
+                SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+                SharedPreferences.Editor editor = share.edit();
+                editor.putString("data_id", "");
+                editor.putString("username", "");
+                editor.putString("password", "");
+                editor.commit();
+                intent=new Intent(getActivity(), Login.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
     }
-    public void setMenuVisibility(boolean menuVisible){
+
+    public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
-        if(this.getView()!=null){
-            this.getView().setVisibility(menuVisible?View.VISIBLE:View.GONE);
+        if (this.getView() != null) {
+            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
         }
     }
 
