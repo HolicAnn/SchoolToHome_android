@@ -213,17 +213,14 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                 = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                if (play_flag) {
-                    //stopPlayer(pos);
-                    if (pos != arg2) {
-                        pos = arg2;
-                        Toast.makeText(getActivity(), "msg.obj.toString()", Toast.LENGTH_SHORT).show();
-                        //startPlayer(pos);
-                    }
-                } else {
-                    pos = arg2;
-                    Toast.makeText(getActivity(), "msg.obj.toString()", Toast.LENGTH_SHORT).show();
-                    //startPlayer(pos);
+                if (arg2==0) {
+                    Toast.makeText(getActivity(), "This is Item 0", Toast.LENGTH_SHORT).show();
+                }
+                if (arg2==1) {
+                    Toast.makeText(getActivity(), "This is Item 1", Toast.LENGTH_SHORT).show();
+                }
+                if (arg2==2) {
+                    Toast.makeText(getActivity(), "This is Item 2", Toast.LENGTH_SHORT).show();
                 }
             }
         };

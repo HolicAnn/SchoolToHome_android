@@ -10,6 +10,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,9 +23,10 @@
             android:orientation="horizontal">
 
             <com.example.easyreader.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_centerInParent="true"
+                android:layout_marginLeft="3dp"
                 android:src="@mipmap/school_logo"
                 app:border_color="@color/white"
                 app:border_width="2dp" />
@@ -37,7 +43,7 @@
                     android:layout_marginLeft="24dp"
                     android:layout_weight="1.2"
                     android:text="This is School_Name"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="24sp" />
 
                 <TextView
@@ -48,18 +54,23 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="This is School_Introduction"
-                    android:textColor="@color/white"
+                    android:textColor="#7E7E7E"
                     android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginHorizontal="2dp"
             android:layout_marginVertical="5dp"
-            android:layout_marginHorizontal="2dp">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -84,9 +95,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="课表"
                     android:gravity="center"
-                    android:textColor="@color/white"/>
+                    android:text="课表"
+                    android:textColor="#7E7E7E" />
             </LinearLayout>
 
             <LinearLayout
@@ -111,9 +122,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="通知"
                     android:gravity="center"
-                    android:textColor="@color/white"/>
+                    android:text="通知"
+                    android:textColor="#7E7E7E" />
             </LinearLayout>
 
             <LinearLayout
@@ -138,9 +149,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="作业"
                     android:gravity="center"
-                    android:textColor="@color/white"/>
+                    android:text="作业"
+                    android:textColor="#7E7E7E" />
             </LinearLayout>
 
             <LinearLayout
@@ -165,9 +176,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="新闻"
                     android:gravity="center"
-                    android:textColor="@color/white"/>
+                    android:text="新闻"
+                    android:textColor="#7E7E7E" />
             </LinearLayout>
         </LinearLayout>
 
@@ -201,7 +212,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="健康申报"
-                    android:textColor="@color/white" />
+                    android:textColor="#7E7E7E" />
 
             </LinearLayout>
 
@@ -229,7 +240,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="打卡签到"
-                    android:textColor="@color/white" />
+                    android:textColor="#7E7E7E" />
 
             </LinearLayout>
 
@@ -257,7 +268,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="请假"
-                    android:textColor="@color/white" />
+                    android:textColor="#7E7E7E" />
 
             </LinearLayout>
 
@@ -285,7 +296,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="联系教师"
-                    android:textColor="@color/white" />
+                    android:textColor="#7E7E7E" />
             </LinearLayout>
 
         </LinearLayout>
