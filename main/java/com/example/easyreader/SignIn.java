@@ -1,7 +1,5 @@
 package com.example.easyreader;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Service;
 import android.content.Context;
 import android.location.Location;
@@ -12,6 +10,8 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
