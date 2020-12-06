@@ -158,53 +158,9 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             }
         }).start();
 
-//        tx1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-//        tx2.setOnClickListener(new View.OnClickListener() {//背景音乐
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-//        tx3.setOnClickListener(new View.OnClickListener() {//主题
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//            }
-//        });
-//        tx4.setOnClickListener(new View.OnClickListener() {//关于
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(getActivity(),About.class);
-//                //intent.setClass();
-//                startActivity(intent);
-//            }
-//        });
-//        tx5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
     }
 
     public void initSettingItems(){
-//        tx1=getView().findViewById(R.id.SettingItem1);
-//        tx2=getView().findViewById(R.id.SettingItem2);
-//        tx3=getView().findViewById(R.id.SettingItem3);
-//        tx4=getView().findViewById(R.id.SettingItem4);
-//        tx5=getView().findViewById(R.id.SettingItem5);
-//        mTextClock = (TextClock)getView().findViewById(R.id.textclock);
-//        // 设置12时制显示格式
-//        mTextClock.setFormat12Hour("MMMM dd,h:mmaa");
-
-        // 设置24时制显示格式
-        //mTextClock.setFormat24Hour("yyyy-MM-dd hh:mm, EEEE");
 
         ListView listView = getView().findViewById(R.id.settingList);
         listViewAdapter = new ListViewAdapter(getActivity(), getData());
@@ -238,15 +194,26 @@ public class m_MyInfoAndSettingFragment extends Fragment {
         HashMap<String, Object> hashMap1 = new HashMap<String, Object>();
         HashMap<String, Object> hashMap2 = new HashMap<String, Object>();
         HashMap<String, Object> hashMap3 = new HashMap<String, Object>();
-        hashMap1.put("image", R.mipmap.play);
-        hashMap1.put("itemName", "古画");
+        HashMap<String, Object> hashMap4 = new HashMap<String, Object>();
+        HashMap<String, Object> hashMap5 = new HashMap<String, Object>();
+        HashMap<String, Object> hashMap6 = new HashMap<String, Object>();
+
+        hashMap1.put("image", R.mipmap.profile);
+        hashMap1.put("itemName", "修改个人资料");
         arrayList.add(hashMap1);
-        hashMap2.put("image", R.mipmap.play);
-        hashMap2.put("itemName", "意浓");
+        hashMap2.put("image", R.mipmap.account);
+        hashMap2.put("itemName", "账号与安全");
         arrayList.add(hashMap2);
-        hashMap3.put("image", R.mipmap.play);
-        hashMap3.put("itemName", "爱河");
+        hashMap3.put("image", R.mipmap.history);
+        hashMap3.put("itemName", "历史记录");
         arrayList.add(hashMap3);
+        hashMap5.put("image", R.mipmap.faq);
+        hashMap5.put("itemName", "常见问题");
+        arrayList.add(hashMap5);
+        hashMap4.put("image", R.mipmap.about);
+        hashMap4.put("itemName", "关于");
+        arrayList.add(hashMap4);
+
         return arrayList;
     }
 }

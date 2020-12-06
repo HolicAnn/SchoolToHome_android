@@ -49,8 +49,8 @@ public class SignIn extends AppCompatActivity {
         locate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vib.vibrate(75);
                 init();
+                vib.vibrate(75);
             }
         });
 
