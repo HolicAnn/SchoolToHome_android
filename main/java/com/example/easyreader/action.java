@@ -1,14 +1,11 @@
 package com.example.easyreader;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,15 +23,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class learning extends AppCompatActivity {
+public class action extends AppCompatActivity {
 
-    private String[] Title = new String[11];
-    private String[] Name = new String[11];
-    private String[] Time = new String[11];
-    private String[] Imageids = new String[11];
+    private String[] Author = new String[5];
+    private String[] Name = new String[5];
+    private String[] Time = new String[5];
+    private String[] Imageids = new String[5];
+    private String[] Professional = new String[5];
+    private String[] Hot = new String[5];
+    private String[] Memo = new String[5];
+    private String[] Id = new String[5];
     private int[] Images = {R.mipmap.learning0, R.mipmap.learning1, R.mipmap.learning2, R.mipmap.learning3, R.mipmap.learning4, R.mipmap.learning5, R.mipmap.learning6, R.mipmap.learning7, R.mipmap.learning8, R.mipmap.learning9, R.mipmap.learning10};
-    private String[] Id = new String[11];
-    private ListView lt1;
+    private ListView action_list;
     public ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();//
 
     @Override
@@ -46,11 +46,10 @@ public class learning extends AppCompatActivity {
             e.printStackTrace();
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.h_learning);
+        setContentView(R.layout.h_action);
         List<Map<String, Object>> listitem = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < Name.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
-            item.put("title", Title[i]);
             item.put("images", Images[i]);
             item.put("name", Name[i]);
             item.put("create_time", Time[i]);
@@ -60,81 +59,39 @@ public class learning extends AppCompatActivity {
         SimpleAdapter simplead = new SimpleAdapter(this, listitem,
                 R.layout.h_learning_item, new String[]{"title", "name", "images", "create_time"},
                 new int[]{R.id.title, R.id.name, R.id.images, R.id.create_time});
-        lt1 = (ListView) findViewById(R.id.lt1);
-        lt1.setAdapter(simplead);
-        final Intent intent = new Intent(learning.this, learning_detail.class);
+        action_list = (ListView) findViewById(R.id.action_list);
+        action_list.setAdapter(simplead);
+        final Intent intent = new Intent(action.this, learning_detail.class);
 
-        lt1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        action_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 1:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 2:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 3:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 4:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
-                    case 5:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
-                        intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
-                        startActivity(intent);
-                        break;
-                    case 6:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
-                        intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
-                        startActivity(intent);
-                        break;
-                    case 7:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
-                        intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
-                        startActivity(intent);
-                        break;
-                    case 8:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
-                        intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
-                        startActivity(intent);
-                        break;
-                    case 9:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
-                        intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
-                        startActivity(intent);
-                        break;
-                    case 10:
-                        //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
-                        intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
-                        startActivity(intent);
-                        break;
-
                 }
             }
         });
@@ -146,7 +103,7 @@ public class learning extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.2.130:3000/user/student/learning_list");
+                    URL url = new URL("http://192.168.2.130:3000/user/student/action_list");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);
@@ -168,14 +125,14 @@ public class learning extends AppCompatActivity {
                             Id[i] = _id;
                             String name = jsonObject.optString("name", null);
                             Name[i] = name;
-                            String title = jsonObject.optString("title", null);
-                            Title[i] = title;
-                            String cover = jsonObject.optString("cover", null);
-                            Imageids[i] = cover;
-                            String video = jsonObject.optString("video", null);
-                            //Video[i] = video;
-                            String qr = jsonObject.optString("QR", null);
-                            //QR[i] = qr;
+                            String author = jsonObject.optString("author", null);
+                            Author[i] = author;
+                            String professional = jsonObject.optString("professional", null);
+                            Professional[i] = professional;
+                            String hot = jsonObject.optString("hot", null);
+                            Hot[i] = hot;
+                            String memo = jsonObject.optString("memo", null);
+                            Memo[i] = memo;
                             String created_time = jsonObject.optString("created_time", null);
                             Time[i] = created_time;
                         }
@@ -187,30 +144,6 @@ public class learning extends AppCompatActivity {
                 }
             }
         }).start();
-    }
-
-    public void test_OnCreate(Bundle savedInstanceState) {
-        String[] title = {"心有所信，方能行远", "使社会始终充满生机活力", "聚天下英才而用之", "一国两制”是完全行得通、办得到、得人心的"};
-        String[] name = {"\uD83C\uDDE8\uD83C\uDDF3青年大学习特辑", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习", "\uD83C\uDDE8\uD83C\uDDF3青年大学习"};
-        String[] desc = {"2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21", "2020-11-19 18:21"};
-        //int[] imageids = {R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1, R.mipmap.haha1};
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.h_learning);
-        List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < name.length; i++) {
-            Map<String, Object> listem = new HashMap<String, Object>();
-            listem.put("title", title[i]);
-            listem.put("head", Imageids[i]);
-            listem.put("name", name[i]);
-            listem.put("desc", desc[i]);
-            listems.add(listem);
-        }
-        SimpleAdapter simplead = new SimpleAdapter(this, listems,
-                R.layout.h_learning_item, new String[]{"title", "name", "head", "desc"},
-                new int[]{R.id.title, R.id.name, R.id.images, R.id.create_time});
-
-        lt1 = (ListView) findViewById(R.id.lt1);
-        lt1.setAdapter(simplead);
     }
 
     public void getJson_1(String result) throws JSONException {

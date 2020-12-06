@@ -18,11 +18,14 @@
         <activity android:name=".h_CheckTable" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
+        <activity android:name=".learning_detail" />
         <activity
             android:name=".About"
             android:theme="@style/AboutTheme" />
         <activity android:name=".JiaXiaoTong" />
         <activity android:name=".learning" />
+        <activity android:name=".action" />
+        <activity android:name=".action_detail" />
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity">
             <intent-filter>
