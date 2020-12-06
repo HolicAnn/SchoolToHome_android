@@ -3,6 +3,7 @@ package com.example.easyreader;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -46,12 +47,15 @@ public class learning_detail extends AppCompatActivity {
         learning_title.setText(_Title);
 
         TextView text_createtime = (TextView) findViewById(R.id.text_createtime);
-        text_createtime.setText("发布时间：" + _Created_time);
+        text_createtime.setText("    发布时间：" + _Created_time);
 
         VideoView vv_video = (VideoView) findViewById(R.id.learning_vedio);
         vv_video.setVideoPath(_Video);
 
-
+        TextView find = (TextView) findViewById(R.id.learning_share);
+        Drawable drawable1=getResources().getDrawable(R.drawable.learning_share);
+        drawable1.setBounds(-10,20,50,90);
+        find.setCompoundDrawables(null,drawable1,null,null);
     }
 
     private void getJson() {

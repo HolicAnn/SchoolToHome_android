@@ -2,6 +2,7 @@ package com.example.easyreader;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -33,7 +34,7 @@ public class action extends AppCompatActivity {
     private String[] Hot = new String[5];
     private String[] Memo = new String[5];
     private String[] Id = new String[5];
-    private int[] Images = {R.mipmap.learning0, R.mipmap.learning1, R.mipmap.learning2, R.mipmap.learning3, R.mipmap.learning4, R.mipmap.learning5, R.mipmap.learning6, R.mipmap.learning7, R.mipmap.learning8, R.mipmap.learning9, R.mipmap.learning10};
+    private int[][] Images = {{R.mipmap.action_31, R.mipmap.action_32, R.mipmap.action_33}, {R.mipmap.action_11, R.mipmap.action_12, R.mipmap.action_13}, {R.mipmap.action_21, R.mipmap.action_22, R.mipmap.action_23},{R.mipmap.action_01, R.mipmap.action_02, R.mipmap.action_03}, {R.mipmap.action_41, R.mipmap.action_42, R.mipmap.action_43}};
     private ListView action_list;
     public ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();//
 
@@ -50,17 +51,21 @@ public class action extends AppCompatActivity {
         List<Map<String, Object>> listitem = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < Name.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
-            item.put("images", Images[i]);
-            item.put("name", Name[i]);
-            item.put("create_time", Time[i]);
-            //System.out.println(Time[i]);
+            item.put("action_name", Author[i]);
+            item.put("action_title", Name[i]);
+            item.put("a_image_21", Images[i][0]);
+            item.put("a_image_22", Images[i][1]);
+            item.put("a_image_23", Images[i][2]);
+            item.put("action_professional", Professional[i]);
+            item.put("action_hot", Hot[i]);
             listitem.add(item);
         }
         SimpleAdapter simplead = new SimpleAdapter(this, listitem,
-                R.layout.h_learning_item, new String[]{"title", "name", "images", "create_time"},
-                new int[]{R.id.title, R.id.name, R.id.images, R.id.create_time});
+                R.layout.h_action_item, new String[]{"action_name", "action_title", "a_image_21", "a_image_22", "a_image_23", "action_professional", "action_hot"},
+                new int[]{R.id.action_name, R.id.action_title, R.id.a_image_21, R.id.a_image_22, R.id.a_image_23, R.id.action_professional, R.id.action_hot});
         action_list = (ListView) findViewById(R.id.action_list);
         action_list.setAdapter(simplead);
+        /*
         final Intent intent = new Intent(action.this, learning_detail.class);
 
         action_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,7 +100,7 @@ public class action extends AppCompatActivity {
                 }
             }
         });
-
+        */
     }
 
     private void getJson() {
@@ -103,7 +108,7 @@ public class action extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.2.130:3000/user/student/action_list");
+                    URL url = new URL("http://172.20.10.2:3000/user/student/action_list");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);
@@ -123,13 +128,13 @@ public class action extends AppCompatActivity {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             String _id = jsonObject.optString("_id", null);
                             Id[i] = _id;
-                            String name = jsonObject.optString("name", null);
+                            String name = "  " + jsonObject.optString("name", null);
                             Name[i] = name;
-                            String author = jsonObject.optString("author", null);
+                            String author = "  " + jsonObject.optString("author", null);
                             Author[i] = author;
-                            String professional = jsonObject.optString("professional", null);
+                            String professional = "  " + jsonObject.optString("professional", null);
                             Professional[i] = professional;
-                            String hot = jsonObject.optString("hot", null);
+                            String hot = "热度：" + jsonObject.optString("hot", null);
                             Hot[i] = hot;
                             String memo = jsonObject.optString("memo", null);
                             Memo[i] = memo;
