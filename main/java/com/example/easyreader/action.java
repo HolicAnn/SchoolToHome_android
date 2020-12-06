@@ -24,6 +24,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.widget.ImageView;
+
 public class action extends AppCompatActivity {
 
     private String[] Author = new String[5];
@@ -34,7 +49,8 @@ public class action extends AppCompatActivity {
     private String[] Hot = new String[5];
     private String[] Memo = new String[5];
     private String[] Id = new String[5];
-    private int[][] Images = {{R.mipmap.action_31, R.mipmap.action_32, R.mipmap.action_33}, {R.mipmap.action_11, R.mipmap.action_12, R.mipmap.action_13}, {R.mipmap.action_21, R.mipmap.action_22, R.mipmap.action_23},{R.mipmap.action_01, R.mipmap.action_02, R.mipmap.action_03}, {R.mipmap.action_41, R.mipmap.action_42, R.mipmap.action_43}};
+    private int[][] Images = {{R.mipmap.action_31, R.mipmap.action_32, R.mipmap.action_33}, {R.mipmap.action_11, R.mipmap.action_12, R.mipmap.action_13}, {R.mipmap.action_21, R.mipmap.action_22, R.mipmap.action_23}, {R.mipmap.action_01, R.mipmap.action_02, R.mipmap.action_03}, {R.mipmap.action_41, R.mipmap.action_42, R.mipmap.action_43}};
+    private int[] Photo = {R.mipmap.action_photo0, R.mipmap.action_photo1, R.mipmap.action_photo2, R.mipmap.action_photo3, R.mipmap.action_photo4};
     private ListView action_list;
     public ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();//
 
@@ -53,6 +69,7 @@ public class action extends AppCompatActivity {
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("action_name", Author[i]);
             item.put("action_title", Name[i]);
+            item.put("action_photo", Photo[i]);
             item.put("a_image_21", Images[i][0]);
             item.put("a_image_22", Images[i][1]);
             item.put("a_image_23", Images[i][2]);
@@ -61,11 +78,10 @@ public class action extends AppCompatActivity {
             listitem.add(item);
         }
         SimpleAdapter simplead = new SimpleAdapter(this, listitem,
-                R.layout.h_action_item, new String[]{"action_name", "action_title", "a_image_21", "a_image_22", "a_image_23", "action_professional", "action_hot"},
-                new int[]{R.id.action_name, R.id.action_title, R.id.a_image_21, R.id.a_image_22, R.id.a_image_23, R.id.action_professional, R.id.action_hot});
+                R.layout.h_action_item, new String[]{"action_name", "action_title", "action_photo", "a_image_21", "a_image_22", "a_image_23", "action_professional", "action_hot"},
+                new int[]{R.id.action_name, R.id.action_title, R.id.action_photo, R.id.a_image_21, R.id.a_image_22, R.id.a_image_23, R.id.action_professional, R.id.action_hot});
         action_list = (ListView) findViewById(R.id.action_list);
         action_list.setAdapter(simplead);
-        /*
         final Intent intent = new Intent(action.this, learning_detail.class);
 
         action_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,7 +116,6 @@ public class action extends AppCompatActivity {
                 }
             }
         });
-        */
     }
 
     private void getJson() {
@@ -108,7 +123,7 @@ public class action extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://172.20.10.2:3000/user/student/action_list");
+                    URL url = new URL("http://192.168.2.130:3000/user/student/action_list");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);
@@ -149,78 +164,5 @@ public class action extends AppCompatActivity {
                 }
             }
         }).start();
-    }
-
-    public void getJson_1(String result) throws JSONException {
-        try {
-            JSONObject jsonObject = new JSONObject(result);
-            String msg = jsonObject.optString("msg", null);
-            System.out.println(msg);
-            int state = jsonObject.optInt("state", 0);
-            System.out.println(state);
-            String list = jsonObject.optString("list", null);
-            System.out.println(list);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        /*
-        {
-        "state": 200,
-        "msg": "获取列表成功",
-        "list":"  "
-        }
-        */
-    }
-
-    public void getJson_2(String result) throws JSONException {
-        try {
-            JSONObject jsonObjectALL = new JSONObject(result);
-            JSONArray jsonArray = jsonObjectALL.getJSONArray("list");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String _id = jsonObject.optString("_id", null);
-                System.out.println(_id);
-                String name = jsonObject.optString("name", null);
-                System.out.println(_id);
-                String title = jsonObject.optString("title", null);
-                System.out.println(_id);
-                String cover = jsonObject.optString("cover", null);
-                System.out.println(_id);
-                String video = jsonObject.optString("video", null);
-                System.out.println(_id);
-                String QR = jsonObject.optString("QR", null);
-                System.out.println(_id);
-                String created_time = jsonObject.optString("created_time", null);
-                System.out.println(_id);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        /*
-        {
-        "state": 200,
-        "msg": "获取列表成功",
-        "list": [
-            {
-             "_id": "5fb6471e26813c2dc8473dd6",
-            "name": "🇨🇳“青年大学习”特辑",
-            "title": "心有所信，方能行远",
-            "cover": "http://img.cyol.com/img/news/attachement/jpg/site2/20200713/IMG484d7ea271a15446058243.jpg",
-            "video": "http://dxxsv.cyol.com/9dxx11.mp4",
-            "QR": "http://h5.cyol.com/special/daxuexi/9fudanhui11/images/erweima.png",
-            "created_time": "2020-11-19 18:21"
-            },
-            {
-            "_id": "5fb6473d26813c2dc8473dd7",
-            "name": "🇨🇳青年大学习",
-            "title": "使社会始终充满生机活力",
-            "cover": "http://img.cyol.com/img/news/attachement/jpg/site2/20200706/IMG484d7ea271a15440039182.jpg",
-            "video": "http://dxxsv.cyol.com/9dxx10.mp4",
-            "QR": "http://h5.cyol.com/special/daxuexi/9aabgtcgs10/images/erweima.png",
-            "created_time": "2020-11-19 18:21"
-            }
-          ]
-        }
-        */
     }
 }

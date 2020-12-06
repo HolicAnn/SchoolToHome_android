@@ -32,6 +32,7 @@ public class learning extends AppCompatActivity {
     private String[] Name = new String[11];
     private String[] Time = new String[11];
     private String[] Imageids = new String[11];
+    private String[] Video = new String[11];
     private int[] Images = {R.mipmap.learning0, R.mipmap.learning1, R.mipmap.learning2, R.mipmap.learning3, R.mipmap.learning4, R.mipmap.learning5, R.mipmap.learning6, R.mipmap.learning7, R.mipmap.learning8, R.mipmap.learning9, R.mipmap.learning10};
     private String[] Id = new String[11];
     private ListView lt1;
@@ -41,7 +42,7 @@ public class learning extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getJson();
         try {
-            Thread.sleep(50);
+            Thread.sleep(80);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -71,66 +72,77 @@ public class learning extends AppCompatActivity {
                     case 0:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 1:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 2:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 3:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 4:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 5:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 6:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 7:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 8:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 9:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 10:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
+                        intent.putExtra("vedioUrl",Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
@@ -173,7 +185,7 @@ public class learning extends AppCompatActivity {
                             String cover = jsonObject.optString("cover", null);
                             Imageids[i] = cover;
                             String video = jsonObject.optString("video", null);
-                            //Video[i] = video;
+                            Video[i] = video;
                             String qr = jsonObject.optString("QR", null);
                             //QR[i] = qr;
                             String created_time = jsonObject.optString("created_time", null);

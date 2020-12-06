@@ -1,26 +1,25 @@
 package com.example.easyreader;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.VideoView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
+import butterknife.BindView;
+
 public class learning_detail extends AppCompatActivity {
+    @BindView(R.id.learning_mevio)
+    WebView webview;
 
     private String id = "";
     private String _Name = "";
@@ -49,13 +48,17 @@ public class learning_detail extends AppCompatActivity {
         TextView text_createtime = (TextView) findViewById(R.id.text_createtime);
         text_createtime.setText("    发布时间：" + _Created_time);
 
-        VideoView vv_video = (VideoView) findViewById(R.id.learning_vedio);
-        vv_video.setVideoPath(_Video);
-
         TextView find = (TextView) findViewById(R.id.learning_share);
         Drawable drawable1=getResources().getDrawable(R.drawable.learning_share);
         drawable1.setBounds(-10,20,50,90);
         find.setCompoundDrawables(null,drawable1,null,null);
+/*
+        webview.loadUrl(_Video);
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.setWebViewClient(new WebViewClient());
+        webview.getSettings().setSupportZoom(true);
+        webview.getSettings().setBuiltInZoomControls(true);
+*/
     }
 
     private void getJson() {
@@ -114,25 +117,4 @@ public class learning_detail extends AppCompatActivity {
         }).start();
     }
 
-    public static Bitmap getHttpBitmap(String url) {
-        URL myFileUrl = null;
-        Bitmap bitmap = null;
-        try {
-            myFileUrl = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
-            conn.setConnectTimeout(0);
-            conn.setDoInput(true);
-            conn.connect();
-            InputStream is = conn.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
-    }
 }

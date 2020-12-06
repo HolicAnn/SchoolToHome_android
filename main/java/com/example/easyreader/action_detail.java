@@ -47,11 +47,6 @@ public class action_detail extends AppCompatActivity {
 
         TextView text_createtime = (TextView) findViewById(R.id.text_createtime);
         text_createtime.setText("发布时间：" + _Created_time);
-
-        VideoView vv_video = (VideoView) findViewById(R.id.learning_vedio);
-        vv_video.setVideoPath(_Video);
-
-
     }
 
     private void getJson() {
