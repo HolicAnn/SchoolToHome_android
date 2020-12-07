@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".health_report"></activity>
+        <activity android:name=".history"></activity>
+        <activity android:name=".health_report" />
         <activity android:name=".ChangeProfile" />
         <activity android:name=".ChangeInfo_sign" />
         <activity android:name=".ChangeInfo_name" />

@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="课表"
+                        android:text="  课表  "
                         android:textColor="#7E7E7E" />
                 </LinearLayout>
 
@@ -224,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="健康申报"
+                        android:text=" 健康申报"
                         android:textColor="#7E7E7E" />
 
                 </LinearLayout>
@@ -252,7 +252,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="打卡签到"
+                        android:text="   签到    "
                         android:textColor="#7E7E7E" />
 
                 </LinearLayout>
@@ -280,7 +280,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="请假"
+                        android:text="   请假   "
                         android:textColor="#7E7E7E" />
 
                 </LinearLayout>
@@ -323,21 +323,32 @@
             android:background="@color/white"/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <TextView
             android:id="@+id/textView23"
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="20dp"
+            android:text="    青年大学习"/>
 
         <ImageButton
             android:id="@+id/imageButton9"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="190dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/learning_view" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="    校园活动" />
 
         <ImageButton
             android:id="@+id/imageButton10"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="190dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/learning_view" />
     </LinearLayout>

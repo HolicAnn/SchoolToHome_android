@@ -2,6 +2,7 @@ package com.example.easyreader;
 
 import android.app.Service;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,11 +22,21 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
+
 public class SignIn extends AppCompatActivity {
     private MapView mapView;
     private AMap aMap;
     private Button locate, signin;
     private LocationManager locationManager;
+    Calendar cal;
+    String year;
+    String month;
+    String day;
+    String hour;
+    String minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +73,35 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(SignIn.this,"签到成功!",Toast.LENGTH_SHORT).show();
                 vib.vibrate(75);
+                cal = Calendar.getInstance();
+                cal.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+
+                year = String.valueOf(cal.get(Calendar.YEAR));
+                month = String.valueOf(cal.get(Calendar.MONTH))+1;
+                day = String.valueOf(cal.get(Calendar.DATE));
+                if (cal.get(Calendar.AM_PM) == 0)
+                    hour = String.valueOf(cal.get(Calendar.HOUR));
+                else
+                    hour = String.valueOf(cal.get(Calendar.HOUR)+12);
+                minute = String.valueOf(cal.get(Calendar.MINUTE));
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                DecimalFormat df=new DecimalFormat("0.###");
+                String str1=df.format(location.getLatitude());
+                String str2=df.format(location.getLongitude());
+                String str=year+"-"+month+"-"+day+" "+hour+":"+minute+" 位置:"+str2+" "+str1;
+                Context ctx = SignIn.this;
+                SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+
+                String s1,s2,s3;
+                s1=share.getString("signin_record1","");
+                s2=share.getString("signin_record2","");
+                s3=share.getString("signin_record3","");
+
+                SharedPreferences.Editor editor = share.edit();
+                editor.putString("signin_record1", str);
+                editor.putString("signin_record2", s1);
+                editor.putString("signin_record3", s2);
+                editor.commit();
             }
         });
 

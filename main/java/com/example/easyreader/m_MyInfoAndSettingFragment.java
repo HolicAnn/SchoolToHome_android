@@ -207,7 +207,9 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     Toast.makeText(getActivity(), "This is Item 1", Toast.LENGTH_SHORT).show();
                 }
                 if (arg2 == 2) {
-                    Toast.makeText(getActivity(), "This is Item 2", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "This is Item 2", Toast.LENGTH_SHORT).show();
+                    intent= new Intent(getActivity(), history.class);
+                    startActivity(intent);
                 }
                 if (arg2 == 3) {
                     intent = new Intent(getActivity(), Faq.class);
