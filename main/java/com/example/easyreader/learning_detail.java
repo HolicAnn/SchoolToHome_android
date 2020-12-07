@@ -3,12 +3,17 @@ package com.example.easyreader;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -37,7 +42,7 @@ public class learning_detail extends AppCompatActivity {
         id = intent.getStringExtra("id");
         getJson();
         try {
-            Thread.sleep(50);
+            Thread.sleep(80);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -47,18 +52,31 @@ public class learning_detail extends AppCompatActivity {
 
         TextView text_createtime = (TextView) findViewById(R.id.text_createtime);
         text_createtime.setText("    发布时间：" + _Created_time);
-
-        TextView find = (TextView) findViewById(R.id.learning_share);
-        Drawable drawable1=getResources().getDrawable(R.drawable.learning_share);
-        drawable1.setBounds(-10,20,50,90);
-        find.setCompoundDrawables(null,drawable1,null,null);
 /*
-        webview.loadUrl(_Video);
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.setWebViewClient(new WebViewClient());
-        webview.getSettings().setSupportZoom(true);
-        webview.getSettings().setBuiltInZoomControls(true);
+        TextView find = (TextView) findViewById(R.id.share_button);
+        Drawable drawable1 = getResources().getDrawable(R.drawable.learning_share);
+        drawable1.setBounds(-10, 20, 50, 90);
+        find.setCompoundDrawables(null, drawable1, null, null);
 */
+        Button share = findViewById(R.id.share_button);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(learning_detail.this, learning_share.class);
+                startActivity(intent);
+            }
+        });
+
+        WebView vedio = (WebView) findViewById(R.id.learning_mevio);
+        vedio.loadUrl(_Video);
+        vedio.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
     }
 
     private void getJson() {
@@ -66,7 +84,8 @@ public class learning_detail extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String _url = "http://192.168.2.130:3000/user/student/learning_detail" + "?id=" + id;
+                    //String _url = "http://172.20.10.2:3000/user/student/learning_detail" + "?id=" + id;
+                    String _url = getString(R.string.Server_IP_Port) + "/user/student/learning_detail" + "?id=" + id;
                     URL url = new URL(_url);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
