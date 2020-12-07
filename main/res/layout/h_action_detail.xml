@@ -23,61 +23,11 @@
     <TextView
         android:id="@+id/action_detail_title"
         android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:gravity="center_horizontal"
-        android:layout_height="35dp"
+        android:text="古韵金陵-六朝古都"
         android:textColor="@color/black"
-        android:textSize="17sp"
-        android:text="古韵金陵-六朝古都" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="135dp"
-            android:layout_height="35dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:background="@color/PeachPuff"
-            android:gravity="center_horizontal"
-            android:text="活动"
-            android:textColor="@color/OrangeRed"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="60dp"
-            android:layout_height="35dp"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:background="@color/PeachPuff"
-            android:gravity="center_horizontal"
-            android:text="积分"
-            android:textColor="@color/OrangeRed"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="135dp"
-            android:layout_height="35dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-    </LinearLayout>
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/action_detail_text4"
@@ -276,7 +226,6 @@
     <ImageView
         android:id="@+id/action_detail_image"
         android:layout_width="match_parent"
-        android:layout_height="218dp"
-        app:srcCompat="@mipmap/cover_0" />
+        android:layout_height="200dp" />
 
 </LinearLayout>

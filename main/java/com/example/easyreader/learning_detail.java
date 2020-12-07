@@ -7,8 +7,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,16 +52,20 @@ public class learning_detail extends AppCompatActivity {
         text_createtime.setText("    发布时间：" + _Created_time);
 
         TextView find = (TextView) findViewById(R.id.learning_share);
-        Drawable drawable1=getResources().getDrawable(R.drawable.learning_share);
-        drawable1.setBounds(-10,20,50,90);
-        find.setCompoundDrawables(null,drawable1,null,null);
-/*
-        webview.loadUrl(_Video);
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.setWebViewClient(new WebViewClient());
-        webview.getSettings().setSupportZoom(true);
-        webview.getSettings().setBuiltInZoomControls(true);
-*/
+        Drawable drawable1 = getResources().getDrawable(R.drawable.learning_share);
+        drawable1.setBounds(-10, 20, 50, 90);
+        find.setCompoundDrawables(null, drawable1, null, null);
+
+        WebView vedio = (WebView) findViewById(R.id.learning_mevio);
+        vedio.loadUrl(_Video);
+        vedio.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
     }
 
     private void getJson() {

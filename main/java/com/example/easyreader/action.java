@@ -46,6 +46,7 @@ public class action extends AppCompatActivity {
     private String[] Time = new String[5];
     private String[] Imageids = new String[5];
     private String[] Professional = new String[5];
+    private int[] Seq = {0, 1, 2, 3, 4};
     private String[] Hot = new String[5];
     private String[] Memo = new String[5];
     private String[] Id = new String[5];
@@ -90,27 +91,27 @@ public class action extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
+                        intent.putExtra("seq", Seq[position]);
                         startActivity(intent);
                         break;
                     case 1:
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
+                        intent.putExtra("seq", Seq[position]);
                         startActivity(intent);
                         break;
                     case 2:
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
+                        intent.putExtra("seq", Seq[position]);
                         startActivity(intent);
                         break;
                     case 3:
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
+                        intent.putExtra("seq", Seq[position]);
                         startActivity(intent);
                         break;
                     case 4:
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("seq", position);
+                        intent.putExtra("seq", Seq[position]);
                         startActivity(intent);
                         break;
                 }

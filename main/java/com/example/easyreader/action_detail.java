@@ -26,7 +26,7 @@ public class action_detail extends AppCompatActivity {
 
     private String id = "";
     private String _Title = "";//标题
-    private int seq;
+    private int _Seq ;
     private String _Professional = "";//院系
     private String _Tribe = "";//部落
     private String _Memo = "";//活动简介
@@ -37,7 +37,6 @@ public class action_detail extends AppCompatActivity {
         setContentView(R.layout.h_action_detail);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        seq = parseInt(intent.getStringExtra("seq"));
         getJson();
         try {
             Thread.sleep(50);
@@ -49,10 +48,7 @@ public class action_detail extends AppCompatActivity {
         title.setText(_Title);
 
         TextView memo = (TextView) findViewById(R.id.action_detail_memo);
-        memo.setText(_Memo);
-
-        TextView learning_title = (TextView) findViewById(R.id.learning_title);
-        learning_title.setText(_Title);
+        memo.setText("    " + _Memo);
 
         TextView professional = (TextView) findViewById(R.id.action_yuanxi);
         professional.setText(_Professional);
@@ -60,16 +56,16 @@ public class action_detail extends AppCompatActivity {
         TextView tribe = (TextView) findViewById(R.id.action_tribe);
         tribe.setText(_Tribe);
 
-        ImageView imageView=(ImageView)findViewById(R.id.action_detail_image);
-        if(seq==0){
+        ImageView imageView = (ImageView) findViewById(R.id.action_detail_image);
+        if (_Seq == 0) {
             imageView.setImageResource(R.mipmap.cover_0);
-        }else if(seq==1){
+        } else if (_Seq == 1) {
             imageView.setImageResource(R.mipmap.cover1);
-        }else if(seq==2){
+        } else if (_Seq == 2) {
             imageView.setImageResource(R.mipmap.cover2);
-        }else if(seq==3){
+        } else if (_Seq == 3) {
             imageView.setImageResource(R.mipmap.cover3);
-        }else if(seq==4){
+        } else if (_Seq == 4) {
             imageView.setImageResource(R.mipmap.cover4);
         }
     }
@@ -101,13 +97,14 @@ public class action_detail extends AppCompatActivity {
                             JSONObject jsondata = new JSONObject(data);
                             String name = jsondata.optString("name", null);
                             _Title = name;
-                            System.out.println(name);
                             String professional = jsondata.optString("professional", null);
                             _Professional = professional;
                             String memo = jsondata.optString("memo", null);
                             _Memo = memo;
                             String tribe = jsondata.optString("tribe", null);
                             _Tribe = tribe;
+                            String seq = jsondata.optString("seq", null);
+                            _Seq = parseInt(seq);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
