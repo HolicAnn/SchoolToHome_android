@@ -39,7 +39,7 @@ public class action_detail extends AppCompatActivity {
         id = intent.getStringExtra("id");
         getJson();
         try {
-            Thread.sleep(50);
+            Thread.sleep(80);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
