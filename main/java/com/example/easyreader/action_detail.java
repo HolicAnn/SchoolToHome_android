@@ -26,7 +26,7 @@ public class action_detail extends AppCompatActivity {
 
     private String id = "";
     private String _Title = "";//标题
-    private int _Seq ;
+    private int _Seq;
     private String _Professional = "";//院系
     private String _Tribe = "";//部落
     private String _Memo = "";//活动简介
@@ -75,7 +75,8 @@ public class action_detail extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String _url = "http://172.20.10.2:3000/user/student/action_detail" + "?id=" + id;
+                    //String _url = "http://172.20.10.2:3000/user/student/action_detail" + "?id=" + id;
+                    String _url = getString(R.string.Server_IP_Port) + "/user/student/action_detail" + "?id=" + id;
                     URL url = new URL(_url);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();

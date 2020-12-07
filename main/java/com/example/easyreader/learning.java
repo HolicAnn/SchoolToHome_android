@@ -72,77 +72,77 @@ public class learning extends AppCompatActivity {
                     case 0:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 1:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 2:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 3:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 4:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 5:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 6:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 7:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 8:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 9:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
                     case 10:
                         //Toast.makeText(learning.this, "第" + position + "个item" + Title[position] + Id[position], Toast.LENGTH_SHORT).show();
                         intent.putExtra("id", Id[position]);
-                        intent.putExtra("vedioUrl",Video[position]);
+                        intent.putExtra("vedioUrl", Video[position]);
                         intent.putExtra("seq", position);
                         startActivity(intent);
                         break;
@@ -158,7 +158,8 @@ public class learning extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://172.20.10.2:3000/user/student/learning_list");
+                    //URL url = new URL("http://172.20.10.2:3000/user/student/learning_list");
+                    URL url = new URL(getString(R.string.Server_IP_Port) + "/user/student/learning_list");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);

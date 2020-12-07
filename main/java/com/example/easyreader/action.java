@@ -124,7 +124,8 @@ public class action extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://172.20.10.2:3000/user/student/action_list");
+                    //URL url = new URL("http://172.20.10.2:3000/user/student/action_list");
+                    URL url = new URL(getString(R.string.Server_IP_Port) + "/user/student/action_list");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);

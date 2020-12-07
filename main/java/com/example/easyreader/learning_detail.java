@@ -84,7 +84,8 @@ public class learning_detail extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String _url = "http://172.20.10.2:3000/user/student/learning_detail" + "?id=" + id;
+                    //String _url = "http://172.20.10.2:3000/user/student/learning_detail" + "?id=" + id;
+                    String _url = getString(R.string.Server_IP_Port) + "/user/student/learning_detail" + "?id=" + id;
                     URL url = new URL(_url);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
