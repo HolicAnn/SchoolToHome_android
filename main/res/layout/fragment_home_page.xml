@@ -66,6 +66,12 @@
             android:layout_height="25dp"
             android:background="#FF8C00"/>
 
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/white"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -309,6 +315,12 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/textView23"
