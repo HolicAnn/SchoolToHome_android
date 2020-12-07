@@ -9,12 +9,12 @@
     <TextView
         android:id="@+id/text_learning"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:layout_weight="1"
+        android:layout_height="55dp"
+        android:background="@color/blue"
         android:gravity="center"
-        android:textSize="20sp"
+        android:text="'十四五'与青年🇨🇳"
         android:textColor="@color/black"
-        android:text="~~~~~~青年大学习~~~~~~" />
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/lt1"

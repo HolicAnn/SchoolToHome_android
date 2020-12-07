@@ -82,7 +82,7 @@ public class action extends AppCompatActivity {
                 new int[]{R.id.action_name, R.id.action_title, R.id.action_photo, R.id.a_image_21, R.id.a_image_22, R.id.a_image_23, R.id.action_professional, R.id.action_hot});
         action_list = (ListView) findViewById(R.id.action_list);
         action_list.setAdapter(simplead);
-        final Intent intent = new Intent(action.this, learning_detail.class);
+        final Intent intent = new Intent(action.this, action_detail.class);
 
         action_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -123,7 +123,7 @@ public class action extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.2.130:3000/user/student/action_list");
+                    URL url = new URL("http://172.20.10.2:3000/user/student/action_list");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);

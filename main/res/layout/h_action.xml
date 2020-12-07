@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:background="@color/blue"
         android:gravity="center"
-        android:text="活动探索"
+        android:text="活动探索🎡"
         android:textColor="@color/black"
         android:textSize="20sp" />
 

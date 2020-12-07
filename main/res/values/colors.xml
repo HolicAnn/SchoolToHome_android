@@ -10,4 +10,7 @@
     <color name="yellow">#FCFC0C</color>
     <color name="black">#000000</color>
     <color name = "blue">#87CEEB</color>
+    <color name = "PeachPuff">#FFDAB9</color>
+    <color name = "OrangeRed">#FF4500</color>
+    <color name = "LightCoral">#FFA07A</color>
 </resources>

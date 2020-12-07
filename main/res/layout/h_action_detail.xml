@@ -1,55 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/images"
-        android:layout_width="137dp"
-        android:layout_height="94dp"
-        android:paddingLeft="10dp" />
+    <TextView
+        android:id="@+id/action_detail_text1"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="活动详情" />
+
+    <TextView
+        android:id="@+id/action_detail_text2"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text="--------------------------------------------------------------------------------------------------------" />
+
+    <TextView
+        android:id="@+id/action_detail_title"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="35dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:text="古韵金陵-六朝古都" />
 
     <LinearLayout
-        android:layout_width="269dp"
-        android:layout_height="100dp"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:textColor="#696969"
-            android:textSize="16dp" />
+            android:id="@+id/textView22"
+            android:layout_width="135dp"
+            android:layout_height="35dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:background="@color/PeachPuff"
+            android:gravity="center_horizontal"
+            android:text="活动"
+            android:textColor="@color/OrangeRed"
+            android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="-2dp"
-                android:layout_weight="1"
-                android:paddingLeft="10dp"
-                android:textColor="#696969"
-                android:textSize="12dp" />
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
-            <TextView
-                android:id="@+id/create_time"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="0dp"
-                android:layout_weight="1"
-                android:paddingLeft="10dp"
-                android:textColor="#696969"
-                android:textSize="12dp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:background="@color/PeachPuff"
+            android:gravity="center_horizontal"
+            android:text="积分"
+            android:textColor="@color/OrangeRed"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="135dp"
+            android:layout_height="35dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/action_detail_text4"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:text="     详情"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/action_detail_memo"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:text="    作为“六朝古都”，南京文化光辉灿烂，从汤山古猿人类到六朝文化、明清文化、民国文化乃至当代文件，都彰显了南京这座古城的传奇"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/action_detail_text3"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:text="     信息"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_detail_text5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="    活动分类" />
+
+        <TextView
+            android:id="@+id/action_detail_text10"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/action_classes"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="文体艺术"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_detail_text6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="    活动院系" />
+
+        <TextView
+            android:id="@+id/action_detail_text11"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/action_yuanxi"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_detail_text7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="    活动年级" />
+
+        <TextView
+            android:id="@+id/action_detail_text12"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/action_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="全部"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_detail_text8"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:text="    活动标签" />
+
+        <TextView
+            android:id="@+id/action_detail_text13"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/action_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="全部"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_detail_text9"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="    归属部落" />
+
+        <TextView
+            android:id="@+id/action_detail_text14"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/action_tribe"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_detail_text15"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="    活动地点" />
+
+        <TextView
+            android:id="@+id/action_detail_text18"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/action_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="南京大学思源图书馆"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/action_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="218dp"
+        app:srcCompat="@mipmap/cover_0" />
 
 </LinearLayout>

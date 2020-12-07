@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -19,22 +20,24 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static java.lang.Integer.parseInt;
+
 public class action_detail extends AppCompatActivity {
 
     private String id = "";
-    private String _Name = "";
-    private String _Title = "";
-    private String _Cover = "";
-    private String _Video = "";
-    private String _QR = "";
-    private String _Created_time = "";
+    private String _Title = "";//标题
+    private int seq;
+    private String _Professional = "";//院系
+    private String _Tribe = "";//部落
+    private String _Memo = "";//活动简介
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.h_learning_detail);
+        setContentView(R.layout.h_action_detail);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        seq = parseInt(intent.getStringExtra("seq"));
         getJson();
         try {
             Thread.sleep(50);
@@ -42,11 +45,33 @@ public class action_detail extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        TextView title = (TextView) findViewById(R.id.action_detail_title);
+        title.setText(_Title);
+
+        TextView memo = (TextView) findViewById(R.id.action_detail_memo);
+        memo.setText(_Memo);
+
         TextView learning_title = (TextView) findViewById(R.id.learning_title);
         learning_title.setText(_Title);
 
-        TextView text_createtime = (TextView) findViewById(R.id.text_createtime);
-        text_createtime.setText("发布时间：" + _Created_time);
+        TextView professional = (TextView) findViewById(R.id.action_yuanxi);
+        professional.setText(_Professional);
+
+        TextView tribe = (TextView) findViewById(R.id.action_tribe);
+        tribe.setText(_Tribe);
+
+        ImageView imageView=(ImageView)findViewById(R.id.action_detail_image);
+        if(seq==0){
+            imageView.setImageResource(R.mipmap.cover_0);
+        }else if(seq==1){
+            imageView.setImageResource(R.mipmap.cover1);
+        }else if(seq==2){
+            imageView.setImageResource(R.mipmap.cover2);
+        }else if(seq==3){
+            imageView.setImageResource(R.mipmap.cover3);
+        }else if(seq==4){
+            imageView.setImageResource(R.mipmap.cover4);
+        }
     }
 
     private void getJson() {
@@ -54,7 +79,7 @@ public class action_detail extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String _url = "http://192.168.2.130:3000/user/student/learning_detail" + "?id=" + id;
+                    String _url = "http://172.20.10.2:3000/user/student/action_detail" + "?id=" + id;
                     URL url = new URL(_url);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
@@ -75,23 +100,14 @@ public class action_detail extends AppCompatActivity {
                         try {
                             JSONObject jsondata = new JSONObject(data);
                             String name = jsondata.optString("name", null);
-                            //System.out.println(name);
-                            _Name = name;
-                            String title = jsondata.optString("title", null);
-                            System.out.println(title);
-                            _Title = title;
-                            String cover = jsondata.optString("cover", null);
-                            //System.out.println(cover);
-                            _Cover = cover;
-                            String video = jsondata.optString("video", null);
-                            //System.out.println(video);
-                            _Video = video;
-                            String QR = jsondata.optString("QR", null);
-                            //System.out.println(QR);
-                            _QR = QR;
-                            String created_time = jsondata.optString("created_time", null);
-                            //System.out.println(created_time);
-                            _Created_time = created_time;
+                            _Title = name;
+                            System.out.println(name);
+                            String professional = jsondata.optString("professional", null);
+                            _Professional = professional;
+                            String memo = jsondata.optString("memo", null);
+                            _Memo = memo;
+                            String tribe = jsondata.optString("tribe", null);
+                            _Tribe = tribe;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -103,27 +119,5 @@ public class action_detail extends AppCompatActivity {
                 }
             }
         }).start();
-    }
-
-    public static Bitmap getHttpBitmap(String url) {
-        URL myFileUrl = null;
-        Bitmap bitmap = null;
-        try {
-            myFileUrl = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
-            conn.setConnectTimeout(0);
-            conn.setDoInput(true);
-            conn.connect();
-            InputStream is = conn.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
     }
 }
