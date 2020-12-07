@@ -51,6 +51,8 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(SignIn.this,"正在定位，请稍候...",Toast.LENGTH_SHORT).show();
                 init();
+                LatLng pos=new LatLng(32.17580772,118.71004343);
+                moveCamera(pos);
                 vib.vibrate(75);
             }
         });
@@ -86,6 +88,7 @@ public class SignIn extends AppCompatActivity {
     }
 
     private void init() {
+
         try {
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER, 300, 8, new LocationListener() {

@@ -42,7 +42,7 @@ public class learning_detail extends AppCompatActivity {
         id = intent.getStringExtra("id");
         getJson();
         try {
-            Thread.sleep(80);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -107,6 +107,8 @@ public class learning_detail extends AppCompatActivity {
                             JSONObject jsondata = new JSONObject(data);
                             String name = jsondata.optString("name", null);
                             //System.out.println(name);
+                            System.out.println("--------------------learningdetail_id------------------------------------------------------");
+                            System.out.println(name);
                             _Name = name;
                             String title = jsondata.optString("title", null);
                             System.out.println(title);

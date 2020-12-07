@@ -2,7 +2,6 @@ package com.example.easyreader;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -11,7 +10,6 @@ import android.widget.SimpleAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -23,21 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.widget.ImageView;
 
 public class action extends AppCompatActivity {
 
@@ -59,7 +42,7 @@ public class action extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getJson();
         try {
-            Thread.sleep(80);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -81,7 +64,7 @@ public class action extends AppCompatActivity {
         SimpleAdapter simplead = new SimpleAdapter(this, listitem,
                 R.layout.h_action_item, new String[]{"action_name", "action_title", "action_photo", "a_image_21", "a_image_22", "a_image_23", "action_professional", "action_hot"},
                 new int[]{R.id.action_name, R.id.action_title, R.id.action_photo, R.id.a_image_21, R.id.a_image_22, R.id.a_image_23, R.id.action_professional, R.id.action_hot});
-        action_list = (ListView) findViewById(R.id.action_list);
+        action_list = (ListView) findViewById(R.id.action_l1);
         action_list.setAdapter(simplead);
         final Intent intent = new Intent(action.this, action_detail.class);
 
@@ -145,6 +128,8 @@ public class action extends AppCompatActivity {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             String _id = jsonObject.optString("_id", null);
                             Id[i] = _id;
+                            System.out.println("--------------------action_id------------------------------------------------------");
+                            System.out.println(_id);
                             String name = "  " + jsonObject.optString("name", null);
                             Name[i] = name;
                             String author = "  " + jsonObject.optString("author", null);

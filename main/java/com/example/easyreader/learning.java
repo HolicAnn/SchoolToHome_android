@@ -42,7 +42,7 @@ public class learning extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getJson();
         try {
-            Thread.sleep(80);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -179,6 +179,8 @@ public class learning extends AppCompatActivity {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             String _id = jsonObject.optString("_id", null);
                             Id[i] = _id;
+                            System.out.println("--------------------learning_id------------------------------------------------------");
+                            System.out.println(_id);
                             String name = jsonObject.optString("name", null);
                             Name[i] = name;
                             String title = jsonObject.optString("title", null);

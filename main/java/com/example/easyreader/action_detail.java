@@ -39,7 +39,7 @@ public class action_detail extends AppCompatActivity {
         id = intent.getStringExtra("id");
         getJson();
         try {
-            Thread.sleep(80);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -62,11 +62,11 @@ public class action_detail extends AppCompatActivity {
         } else if (_Seq == 1) {
             imageView.setImageResource(R.mipmap.cover1);
         } else if (_Seq == 2) {
-            imageView.setImageResource(R.mipmap.cover2);
-        } else if (_Seq == 3) {
-            imageView.setImageResource(R.mipmap.cover3);
-        } else if (_Seq == 4) {
             imageView.setImageResource(R.mipmap.cover4);
+        } else if (_Seq == 3) {
+            imageView.setImageResource(R.mipmap.cover2);
+        } else if (_Seq == 4) {
+            imageView.setImageResource(R.mipmap.cover3);
         }
     }
 
@@ -97,6 +97,8 @@ public class action_detail extends AppCompatActivity {
                         try {
                             JSONObject jsondata = new JSONObject(data);
                             String name = jsondata.optString("name", null);
+                            System.out.println("--------------actiondetail_name------------------------------------------------------------");
+                            System.out.println(name);
                             _Title = name;
                             String professional = jsondata.optString("professional", null);
                             _Professional = professional;
