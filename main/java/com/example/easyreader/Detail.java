@@ -44,6 +44,8 @@ public class Detail
         private String created_time;
 
         private String classesId;
+
+        public String memo;
     }
 
 }

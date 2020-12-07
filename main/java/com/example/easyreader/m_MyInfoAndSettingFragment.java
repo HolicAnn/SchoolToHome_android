@@ -68,9 +68,22 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             //Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
             String str = msg.obj.toString();
             nickname.setText(str);
-        }
 
-        ;
+//            Context ctx = getActivity();
+//            SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+//            String str=share.getString("qianming","");
+//            qm = getView().findViewById(R.id.qianming);
+//            nickname.setText(str);
+        };
+    };
+    private Handler mHandler2 = new Handler() {
+        public void handleMessage(Message msg) {
+            qm = getView().findViewById(R.id.qianming);
+            //status.setText(Html.fromHtml(msg.obj.toString()));
+            //Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            String str = msg.obj.toString();
+            qm.setText(str);
+        };
     };
 
     public m_MyInfoAndSettingFragment() {
@@ -126,7 +139,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             public void run() {
                 try {
                     Message msg = new Message();
-
+                    Message msg1 = new Message();
                     //写入共享变量
                     Context ctx = getActivity();
                     SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
@@ -134,7 +147,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     String accStr = share.getString("data_id", "");
                     //System.out.println(accStr);
 
-                    String uurl = getString(R.string.Server_IP_Port) + "/user/user/detail" + accStr;
+                    String uurl = getString(R.string.Server_IP_Port) + "/user/user/detail?" + accStr;
                     URL url = new URL(uurl);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
@@ -153,8 +166,16 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     Detail detail = jsonUtils_detail.parseDetailFromJson(result);
                     //Data data=new Detail.data();
                     msg.obj = detail.data.nickname;
+                    msg1.obj=detail.data.memo;
                     System.out.println("nickname:" + detail.data.nickname);
+                    System.out.println("memo:" + detail.data.memo);
+//                    Context ctx = getActivity();
+//                    SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+                    SharedPreferences.Editor editor = share.edit();
+                    editor.putString("qianming", detail.data.memo);
+                    editor.commit();
                     mHandler1.sendMessage(msg);
+                    mHandler2.sendMessage(msg1);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -162,12 +183,6 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                 }
             }
         }).start();
-
-        Context ctx = getActivity();
-        SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
-        String qianming=share.getString("qianming","");
-        qm=getView().findViewById(R.id.qianming);
-        qm.setText(qianming);
 
 
     }
@@ -256,5 +271,66 @@ public class m_MyInfoAndSettingFragment extends Fragment {
         arrayList.add(hashMap4);
 
         return arrayList;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            //相当于Fragment的onResume
+            System.out.println("----------调用onResume----------");
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Message msg = new Message();
+                        Message msg1 = new Message();
+                        //写入共享变量
+                        Context ctx = getActivity();
+                        SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+
+                        String accStr = share.getString("data_id", "");
+                        //System.out.println(accStr);
+
+                        String uurl = getString(R.string.Server_IP_Port) + "/user/user/detail?" + accStr;
+                        URL url = new URL(uurl);
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        InputStream in = urlConnection.getInputStream();
+                        InputStreamReader isw = new InputStreamReader(in);
+                        BufferedReader br = new BufferedReader(isw);
+                        StringBuilder sb = new StringBuilder();
+                        String result = "";
+                        String line = "";
+                        while ((line = br.readLine()) != null) {
+                            result = result + line;
+                        }
+                        System.out.println("--------------------------------------------------------------------------");
+                        System.out.println(result);
+                        br.close();
+                        JsonUtils_detail jsonUtils_detail = new JsonUtils_detail();
+                        Detail detail = jsonUtils_detail.parseDetailFromJson(result);
+                        //Data data=new Detail.data();
+                        msg.obj = detail.data.nickname;
+                        msg1.obj=detail.data.memo;
+                        System.out.println("nickname:" + detail.data.nickname);
+                        System.out.println("memo:" + detail.data.memo);
+//                    Context ctx = getActivity();
+//                    SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+                        SharedPreferences.Editor editor = share.edit();
+                        editor.putString("qianming", detail.data.memo);
+                        editor.commit();
+                        mHandler1.sendMessage(msg);
+                        mHandler2.sendMessage(msg1);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        } else {
+            //相当于Fragment的onPause
+            System.out.println("----------调用onPause----------");
+        }
     }
 }

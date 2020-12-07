@@ -130,7 +130,7 @@ public class Login extends AppCompatActivity {
                             Context ctx = Login.this;
                             SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
                             SharedPreferences.Editor editor = share.edit();
-                            String str = "?data_id=" + jsonUtils_login.parseLoginStateFromJson(result).getData();
+                            String str = "data_id=" + jsonUtils_login.parseLoginStateFromJson(result).getData();
                             editor.putString("data_id", str);
                             editor.putString("username", account);
                             editor.putString("password", password);

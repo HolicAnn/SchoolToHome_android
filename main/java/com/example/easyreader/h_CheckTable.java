@@ -53,7 +53,7 @@ public class h_CheckTable extends AppCompatActivity {
                     String accStr=share.getString("data_id","");
                     //System.out.println(accStr);
 
-                    String uurl=getString(R.string.Server_IP_Port)+"/user/student/get_timetable"+accStr;
+                    String uurl=getString(R.string.Server_IP_Port)+"/user/student/get_timetable?"+accStr;
                     URL url = new URL(uurl);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();

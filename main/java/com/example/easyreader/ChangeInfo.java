@@ -2,11 +2,16 @@ package com.example.easyreader;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,10 +25,20 @@ public class ChangeInfo extends AppCompatActivity {
     private Handler mHandler1 = new Handler() {
         public void handleMessage(Message msg) {
 
-        }
-
-        ;
+        };
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ListView listView1=findViewById(R.id.change1);
+        ListView listView2=findViewById(R.id.change2);
+        listViewAdapter = new ListViewAdapter2(ChangeInfo.this, getData1());
+        listView1.setAdapter(listViewAdapter);
+
+        listViewAdapter = new ListViewAdapter2(ChangeInfo.this, getData2());
+        listView2.setAdapter(listViewAdapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +54,30 @@ public class ChangeInfo extends AppCompatActivity {
         listViewAdapter = new ListViewAdapter2(ChangeInfo.this, getData2());
         listView2.setAdapter(listViewAdapter);
 
+        AdapterView.OnItemClickListener listViewListener1
+                = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                if (arg2 == 0) {
+
+                }
+                if (arg2 == 1) {
+                    Toast.makeText(ChangeInfo.this, "This is Item 1", Toast.LENGTH_SHORT).show();
+                }
+                if (arg2 == 2) {
+                    Toast.makeText(ChangeInfo.this, "This is Item 2", Toast.LENGTH_SHORT).show();
+                }
+                if (arg2 == 3) {
+
+                }
+                if (arg2 == 4) {
+                    intent = new Intent(ChangeInfo.this, ChangeInfo_sign.class);
+                    startActivity(intent);
+                }
+            }
+        };
+        listView1.setOnItemClickListener(listViewListener1);
+
 
     }
 
@@ -51,16 +90,26 @@ public class ChangeInfo extends AppCompatActivity {
         HashMap<String, Object> hashMap5 = new HashMap<String, Object>();
         HashMap<String, Object> hashMap6 = new HashMap<String, Object>();
 
+        Context ctx = ChangeInfo.this;
+        SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+        String qianming=share.getString("qianming","");
+        String phone=share.getString("username","");
+
+
         hashMap1.put("itemName", "头像");
         arrayList.add(hashMap1);
         hashMap2.put("itemName", "学校");
+        hashMap2.put("value","南京大学金陵学院");
         arrayList.add(hashMap2);
         hashMap3.put("itemName", "性别");
+        hashMap3.put("value","请选择");
         arrayList.add(hashMap3);
         hashMap5.put("itemName", "手机号");
+        hashMap5.put("value",phone);
         arrayList.add(hashMap5);
+
         hashMap4.put("itemName", "个性签名");
-        hashMap4.put("value","123");
+        hashMap4.put("value",qianming);
         arrayList.add(hashMap4);
 
         return arrayList;

@@ -88,12 +88,6 @@ public class JiaXiaoTong extends AppCompatActivity {
         Fragment fragment=(Fragment)adapter.instantiateItem(homeContent,i);
         adapter.setPrimaryItem(homeContent,0,fragment);
         adapter.finishUpdate(homeContent);
-
-        Context ctx = JiaXiaoTong.this;
-        SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
-        SharedPreferences.Editor editor = share.edit();
-        editor.putString("qianming", "以梦为马，不负韶华");
-        editor.commit();
     }
 
     protected void onStart() {
