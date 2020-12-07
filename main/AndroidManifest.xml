@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Faq"></activity>
+        <activity android:name=".ChangeInfo"></activity>
+        <activity android:name=".Faq" />
         <activity android:name=".SignIn" />
         <activity android:name=".h_CheckTable" />
         <activity android:name=".Register" />

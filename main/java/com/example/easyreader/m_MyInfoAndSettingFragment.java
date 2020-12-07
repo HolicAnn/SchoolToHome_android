@@ -49,7 +49,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 
     private ListView listview;
 
-    private TextView tx1, tx2, tx3, tx4, tx5, nickname;
+    private TextView tx1, tx2, tx3, tx4, tx5, nickname,qm;
     private TextClock mTextClock;
 
     private Button loginout;
@@ -57,7 +57,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
     Intent intent = new Intent();
     ArrayList<HashMap<String, Object>> arrayList;
     int pos = -1;
-    boolean play_flag = false;
+    //boolean play_flag = false;
     ListViewAdapter listViewAdapter;
     ImageView imageView = null;
 
@@ -163,6 +163,13 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             }
         }).start();
 
+        Context ctx = getActivity();
+        SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+        String qianming=share.getString("qianming","");
+        qm=getView().findViewById(R.id.qianming);
+        qm.setText(qianming);
+
+
     }
 
     public void initSettingItems() {
@@ -175,7 +182,9 @@ public class m_MyInfoAndSettingFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 if (arg2 == 0) {
-                    Toast.makeText(getActivity(), "This is Item 0", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "This is Item 0", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(getActivity(), ChangeInfo.class);
+                    startActivity(intent);
                 }
                 if (arg2 == 1) {
                     Toast.makeText(getActivity(), "This is Item 1", Toast.LENGTH_SHORT).show();
