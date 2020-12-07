@@ -173,6 +173,8 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 //                    SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
                     SharedPreferences.Editor editor = share.edit();
                     editor.putString("qianming", detail.data.memo);
+                    editor.putString("xuehao", detail.data.XH);
+                    editor.putString("nickname", detail.data.nickname);
                     editor.commit();
                     mHandler1.sendMessage(msg);
                     mHandler2.sendMessage(msg1);

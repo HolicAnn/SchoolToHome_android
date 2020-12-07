@@ -43,8 +43,8 @@ public class h_HomePageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private WebView webView;
-    private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8;
+    //private WebView webView;
+    private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10;
 //    private Handler mHandler1 = new Handler() {
 //        public void handleMessage(Message msg) {
 //            String str=msg.obj.toString();
@@ -144,7 +144,10 @@ public class h_HomePageFragment extends Fragment {
         ib5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "这是功能5", Toast.LENGTH_SHORT).show();
+                Intent intent = null;
+                intent = new Intent(getActivity(), health_report.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), "这是功能5", Toast.LENGTH_SHORT).show();
             }
         });
         ib6.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +172,18 @@ public class h_HomePageFragment extends Fragment {
                 Toast.makeText(getActivity(), "正在拨打电话...", Toast.LENGTH_SHORT).show();
             }
         });
-
+        ib9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "青年大学习界面", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "活动界面", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -183,14 +197,16 @@ public class h_HomePageFragment extends Fragment {
         ib6=getView().findViewById(R.id.imageButton6);
         ib7=getView().findViewById(R.id.imageButton7);
         ib8=getView().findViewById(R.id.imageButton8);
+        ib9=getView().findViewById(R.id.imageButton9);
+        ib10=getView().findViewById(R.id.imageButton10);
 
-        webView = getView().findViewById(R.id.webview);
-        webView.loadUrl("http://news.cyol.com/node_67071.htm");
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setBuiltInZoomControls(true);
+//        webView = getView().findViewById(R.id.webview);
+//        webView.loadUrl("http://news.cyol.com/node_67071.htm");
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.setWebViewClient(new WebViewClient());
+//        webView.getSettings().setLoadWithOverviewMode(true);
+//        webView.getSettings().setUseWideViewPort(true);
+//        webView.getSettings().setBuiltInZoomControls(true);
 
 
     }

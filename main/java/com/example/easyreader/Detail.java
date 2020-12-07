@@ -46,6 +46,8 @@ public class Detail
         private String classesId;
 
         public String memo;
+
+        public String XH;
     }
 
 }

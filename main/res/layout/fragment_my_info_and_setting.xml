@@ -91,12 +91,12 @@
 
     <Button
         android:id="@+id/LoginOut"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="#AAFF0000"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:text="退出登录" />
+        android:background="@color/white"
+        android:text="退出登录"
+        android:textColor="#8E8E8E"
+        android:textSize="20sp" />
 
 </LinearLayout>

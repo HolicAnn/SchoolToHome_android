@@ -59,10 +59,11 @@ public class ChangeInfo extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 if (arg2 == 0) {
-
+                    intent=new Intent(ChangeInfo.this,ChangeProfile.class);
+                    startActivity(intent);
                 }
                 if (arg2 == 1) {
-                    Toast.makeText(ChangeInfo.this, "This is Item 1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangeInfo.this, "学校名称只能由学校管理员修改！", Toast.LENGTH_SHORT).show();
                 }
                 if (arg2 == 2) {
                     Toast.makeText(ChangeInfo.this, "This is Item 2", Toast.LENGTH_SHORT).show();
@@ -77,7 +78,20 @@ public class ChangeInfo extends AppCompatActivity {
             }
         };
         listView1.setOnItemClickListener(listViewListener1);
-
+        AdapterView.OnItemClickListener listViewListener2
+                = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                if (arg2 == 0) {
+                    intent = new Intent(ChangeInfo.this, ChangeInfo_name.class);
+                    startActivity(intent);
+                }
+                if (arg2 == 1) {
+                    Toast.makeText(ChangeInfo.this, "学号只能由学校管理员修改！", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+        listView2.setOnItemClickListener(listViewListener2);
 
     }
 
@@ -97,6 +111,7 @@ public class ChangeInfo extends AppCompatActivity {
 
 
         hashMap1.put("itemName", "头像");
+        hashMap1.put("value","点击修改头像");
         arrayList.add(hashMap1);
         hashMap2.put("itemName", "学校");
         hashMap2.put("value","南京大学金陵学院");
@@ -116,6 +131,11 @@ public class ChangeInfo extends AppCompatActivity {
     }
 
     private ArrayList<HashMap<String, Object>> getData2() {
+        Context ctx = ChangeInfo.this;
+        SharedPreferences share =ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+        String xuehao=share.getString("xuehao","");
+        String nickname=share.getString("nickname","");
+
         arrayList = new ArrayList<HashMap<String, Object>>();
         HashMap<String, Object> hashMap1 = new HashMap<String, Object>();
         HashMap<String, Object> hashMap2 = new HashMap<String, Object>();
@@ -125,8 +145,10 @@ public class ChangeInfo extends AppCompatActivity {
         HashMap<String, Object> hashMap6 = new HashMap<String, Object>();
 
         hashMap1.put("itemName", "姓名");
+        hashMap1.put("value", nickname);
         arrayList.add(hashMap1);
         hashMap2.put("itemName", "学号");
+        hashMap2.put("value", xuehao);
         arrayList.add(hashMap2);
 
         return arrayList;

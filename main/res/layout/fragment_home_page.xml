@@ -307,16 +307,27 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
 
-        <WebView
-            android:id="@+id/webview"
+        <TextView
+            android:id="@+id/textView23"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginHorizontal="2dp"
-            android:layout_marginTop="5dp">
+            android:layout_height="20dp" />
 
-        </WebView>
+        <ImageButton
+            android:id="@+id/imageButton9"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/learning_view" />
 
+        <ImageButton
+            android:id="@+id/imageButton10"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/learning_view" />
     </LinearLayout>
+
 </FrameLayout>

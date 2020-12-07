@@ -49,6 +49,7 @@ public class SignIn extends AppCompatActivity {
         locate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(SignIn.this,"正在定位，请稍候...",Toast.LENGTH_SHORT).show();
                 init();
                 vib.vibrate(75);
             }
