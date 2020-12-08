@@ -9,13 +9,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="#FF9800" />
+        android:background="#AA7DFA" />
 
     <TextView
         android:id="@+id/text_action"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FF9800"
+        android:background="#AA7DFA"
         android:gravity="center"
         android:text="活动探索🎡"
         android:textColor="@color/white"

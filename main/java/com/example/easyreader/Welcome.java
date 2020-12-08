@@ -1,6 +1,8 @@
 package com.example.easyreader;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +23,20 @@ import java.util.List;
 public class Welcome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Context ctx = Welcome.this;
+        SharedPreferences share = ctx.getSharedPreferences("myshare", Context.MODE_APPEND);
+        SharedPreferences.Editor editor = share.edit();
+        String str=share.getString("FirstUse","");
+        if(str.equals("1")){
+            Intent intent=new Intent(Welcome.this, Login.class);
+            startActivity(intent);
+            Welcome.this.finish();
+        }
+        else{
+            editor.putString("FirstUse", "1");
+            editor.commit();
+        }
+
         super.onCreate(savedInstanceState);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -45,7 +61,7 @@ public class Welcome extends AppCompatActivity {
         btn2homepage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Welcome.this, JiaXiaoTong.class);
+                Intent intent=new Intent(Welcome.this, Login.class);
                 startActivity(intent);
                 Welcome.this.finish();
             }

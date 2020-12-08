@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#FF9800">
+            android:background="@mipmap/pic_background">
 
             <TextView
                 android:id="@+id/textView11"
@@ -58,7 +58,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="诚朴雄伟,励学敦行"
-                        android:textColor="#757272"
+                        android:textColor="#DCDCDC"
                         android:textSize="18sp" />
 
                 </LinearLayout>

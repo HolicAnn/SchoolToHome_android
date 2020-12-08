@@ -8,8 +8,8 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_welcome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,7 +22,7 @@
         android:layout_width="139dp"
         android:layout_height="44dp"
         android:background="@drawable/btn_round"
-        android:text="进入EasyReader"
+        android:text="进入家校通"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

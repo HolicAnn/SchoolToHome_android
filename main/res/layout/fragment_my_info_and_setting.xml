@@ -10,7 +10,7 @@
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#FF9800" />
+        android:background="#AA7DFA" />
 
     <TextView
         android:id="@+id/textView41"

@@ -240,12 +240,12 @@ public class h_HomePageFragment extends Fragment {
         View view_h1 = View.inflate(getActivity(), R.layout.h1, null);
 
         webView_h1 = view_h1.findViewById(R.id.webView_h1);
-        webView_h1.loadUrl("http://bing.com");
+        webView_h1.loadUrl("http://www.bing.com");
         webView_h1.getSettings().setJavaScriptEnabled(true);
         webView_h1.setWebViewClient(new WebViewClient());
         webView_h1.getSettings().setLoadWithOverviewMode(true);
         webView_h1.getSettings().setUseWideViewPort(true);
-        webView_h1.getSettings().setBuiltInZoomControls(true);
+        //webView_h1.getSettings().setBuiltInZoomControls(true);
 
 
     }
