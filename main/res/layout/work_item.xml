@@ -1,0 +1,98 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.easyreader.ActivityFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/work_null"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:text="作业消息提醒"
+            android:textColor="@color/black"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/work_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="任凯老师发布了新作业"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/work_classes"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="所属班级:"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/work_commit_time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="截止日期:"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/work_null1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="备注:"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/work_null2"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/work_memo"
+                android:layout_width="330dp"
+                android:layout_height="70dp"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:text="    课程大作业一(rational建模实验)，作业二(成语接龙，java和c实现)，请及时完成提交。"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/work_null3"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

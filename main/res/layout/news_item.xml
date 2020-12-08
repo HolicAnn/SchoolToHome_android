@@ -1,0 +1,90 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.easyreader.ActivityFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/news_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:text="2020-12-03 08:23:89" />
+
+        <TextView
+            android:id="@+id/new_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="南京大学金陵学院"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/new_msg"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+
+            android:text="通知：智能手机与移动PC编程技术大作业答辩"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/new_numm4"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_marginLeft="5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="----------------------------------------------------------------------------------------------" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/new_null1"
+                    android:layout_width="360dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="查看详情"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/new_null2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:text="👉" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

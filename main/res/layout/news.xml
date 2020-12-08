@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".learning">
+
+    <TextView
+        android:id="@+id/text_news"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="通知"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/new_list"
+        android:layout_width="match_parent"
+        android:layout_height="604dp"></ListView>
+</LinearLayout>

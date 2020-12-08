@@ -44,7 +44,10 @@
         <activity android:name=".learning" />
         <activity android:name=".learning_share" />
         <activity android:name=".action" />
+        <activity android:name=".work" />
         <activity android:name=".action_detail" />
+        <activity android:name=".news" />
+        <activity android:name=".news_detail" />
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity">
             <intent-filter>
