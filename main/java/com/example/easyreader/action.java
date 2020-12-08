@@ -42,7 +42,7 @@ public class action extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getJson();
         try {
-            Thread.sleep(300);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

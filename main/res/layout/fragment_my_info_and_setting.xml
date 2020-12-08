@@ -35,7 +35,7 @@
             android:layout_marginTop="2dp">
 
             <TextView
-                android:id="@+id/nickname"
+                android:id="@+id/schoolname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -45,7 +45,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/qianming"
+                android:id="@+id/schoolmemo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"

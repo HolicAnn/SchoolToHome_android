@@ -4,20 +4,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.telecom.TelecomManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,6 +51,7 @@ public class h_HomePageFragment extends Fragment {
 
     //private WebView webView;
     private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10;
+    private TextView schoolname,schoolmemo;
 //    private Handler mHandler1 = new Handler() {
 //        public void handleMessage(Message msg) {
 //            String str=msg.obj.toString();
@@ -194,6 +201,12 @@ public class h_HomePageFragment extends Fragment {
     }
 
     public void initHomePage() {
+
+        schoolname=getView().findViewById(R.id.schoolname);
+        schoolmemo=getView().findViewById(R.id.schoolmemo);
+        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.likai);
+        schoolname.setTypeface(typeface);
+        schoolmemo.setTypeface(typeface);
 
         ib1=getView().findViewById(R.id.imageButton);
         ib2=getView().findViewById(R.id.imageButton2);
