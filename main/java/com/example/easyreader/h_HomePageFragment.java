@@ -18,6 +18,9 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -32,6 +35,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,7 +54,7 @@ public class h_HomePageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    //private WebView webView;
+    private WebView webView_h1;
     private ImageButton ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10;
     private TextView schoolname,schoolmemo;
 //    private Handler mHandler1 = new Handler() {
@@ -216,16 +221,31 @@ public class h_HomePageFragment extends Fragment {
         ib6=getView().findViewById(R.id.imageButton6);
         ib7=getView().findViewById(R.id.imageButton7);
         ib8=getView().findViewById(R.id.imageButton8);
+
+        ViewPager viewPager1 = getView().findViewById(R.id.viewpager_home);
+        List<View> views = new ArrayList<View>();
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+
+        View view1 = inflater.inflate(R.layout.h1, null);
+        View view2 = inflater.inflate(R.layout.h2, null);
+        View view3 = inflater.inflate(R.layout.h3, null);
+
+        views.add(view1);
+        views.add(view2);
+        views.add(view3);
+
+        viewPager1.setAdapter(new HomePagerAdapter(views));
         //ib9=getView().findViewById(R.id.imageButton9);
         //ib10=getView().findViewById(R.id.imageButton10);
+        View view_h1 = View.inflate(getActivity(), R.layout.h1, null);
 
-//        webView = getView().findViewById(R.id.webview);
-//        webView.loadUrl("http://news.cyol.com/node_67071.htm");
-//        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.setWebViewClient(new WebViewClient());
-//        webView.getSettings().setLoadWithOverviewMode(true);
-//        webView.getSettings().setUseWideViewPort(true);
-//        webView.getSettings().setBuiltInZoomControls(true);
+        webView_h1 = view_h1.findViewById(R.id.webView_h1);
+        webView_h1.loadUrl("http://bing.com");
+        webView_h1.getSettings().setJavaScriptEnabled(true);
+        webView_h1.setWebViewClient(new WebViewClient());
+        webView_h1.getSettings().setLoadWithOverviewMode(true);
+        webView_h1.getSettings().setUseWideViewPort(true);
+        webView_h1.getSettings().setBuiltInZoomControls(true);
 
 
     }
@@ -276,5 +296,32 @@ public class h_HomePageFragment extends Fragment {
                 }
             }
         }).start();
+    }
+
+    public class HomePagerAdapter extends PagerAdapter {
+        public List<View> views;
+
+        public HomePagerAdapter(List<View> views) {
+            this.views = views;
+        }
+
+        @Override
+        public int getCount() { return views.size(); }
+
+        @Override
+        public boolean isViewFromObject(View view, Object obj) {
+            return view == obj;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int pos, Object obj) {
+            ((ViewPager) container).removeView(views.get(pos));
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            ((ViewPager) container).addView(views.get(position));
+            return views.get(position);
+        }
     }
 }
