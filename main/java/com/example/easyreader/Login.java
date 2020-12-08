@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
 
     private Button btnLogin;
     private EditText login_account, login_password;
-    private TextView status,register;
+    private TextView status,register,resetpwd;
     private String uurl;
     private URL url;
     private HttpURLConnection urlConnection = null;
@@ -58,6 +58,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setStatusBarFullTransparent();
         register=findViewById(R.id.textView48);
+        resetpwd=findViewById(R.id.textView49);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +67,14 @@ public class Login extends AppCompatActivity {
                 Login.this.finish();
             }
         });
-
+        resetpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Login.this,Change.class);
+                startActivity(intent);
+                Login.this.finish();
+            }
+        });
 
         Intent intent = getIntent();
         String msg1 = intent.getStringExtra("phoneNumber");

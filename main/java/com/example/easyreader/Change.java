@@ -1,12 +1,13 @@
 package com.example.easyreader;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,8 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,8 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Register extends AppCompatActivity {
-
+public class Change extends AppCompatActivity {
     private Button register_button, getverifycode_button;
     private EditText register_nickname, register_password, register_phonenumber, register_verifycode;
     private TextView status;
@@ -36,48 +34,45 @@ public class Register extends AppCompatActivity {
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             //status.setText(Html.fromHtml(msg.obj.toString()));
-            Toast.makeText(Register.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
-            if(msg.obj.toString().equals("注册成功")){
+            Toast.makeText(Change.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            System.out.println(msg.obj.toString());
+            if(msg.obj.toString().equals("重置密码成功")){
                 Intent intent = null;
-                intent = new Intent(Register.this, Login.class);
+                intent = new Intent(Change.this, Login.class);
                 intent.putExtra("phoneNumber", register_phonenumber.getText().toString());
                 intent.putExtra("passWord", register_password.getText().toString());
                 startActivity(intent);
-                Register.this.finish();
+                Change.this.finish();
             }
         };
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_change);
         setStatusBarFullTransparent();
-        register_button = findViewById(R.id.register_Button);
-        getverifycode_button = findViewById(R.id.getVerifyCode);
-        register_nickname = findViewById(R.id.nickName);
-        register_password = findViewById(R.id.register_password);
-        register_phonenumber = findViewById(R.id.register_phoneNumber);
-        register_verifycode = findViewById(R.id.register_verifyCode);
-        status = findViewById(R.id.register_status);
+
+        register_button = findViewById(R.id.ch_Button);
+        getverifycode_button = findViewById(R.id.getVerifyCode2);
+        register_password = findViewById(R.id.ch_password);
+        register_phonenumber = findViewById(R.id.ch_phone);
+        register_verifycode=findViewById(R.id.change_verifyCode);
 
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String nickname=register_nickname.getText().toString();
+                //final String nickname=register_nickname.getText().toString();
                 final String password=register_password.getText().toString();
                 final String verifycode=register_verifycode.getText().toString();
                 final String phoneNumber=register_phonenumber.getText().toString();
                 uurl = getString(R.string.Server_IP_Port);
-                uurl+="/user/user/register?phone=";
+                uurl+="/user/user/resetpwd?phone=";
                 //uurl = new String("http://192.168.2.130:3000/user/user/register?phone=");
                 uurl+=phoneNumber;
-                uurl+="&password=";
+                uurl+="&newpwd=";
                 uurl+=password;
                 uurl+="&codes=";
                 uurl+=verifycode;
-                uurl+="&nickname=";
-                uurl+=nickname;
 
 
                 new Thread(new Runnable() {
@@ -120,7 +115,7 @@ public class Register extends AppCompatActivity {
                 String uuurl = getString(R.string.Server_IP_Port);
                 uurl = uuurl+"/user/user/sendSMS?phone=";
                 uurl+=phoneNumber;
-                uurl+="&TemplateCode=1";
+                uurl+="&TemplateCode=2";
 
                 new Thread(new Runnable() {
                     @Override
@@ -154,6 +149,7 @@ public class Register extends AppCompatActivity {
                 }).start();
             }
         });
+
     }
 
     protected void setStatusBarFullTransparent() {

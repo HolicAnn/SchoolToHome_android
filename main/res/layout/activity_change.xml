@@ -5,83 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/login_background"
-    tools:context=".Login">
-
-    <EditText
-        android:id="@+id/register_phoneNumber"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:background="@drawable/edit_bg"
-        android:hint="请输入手机号"
-        android:inputType="phone"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
-
-    <EditText
-        android:id="@+id/register_verifyCode"
-        android:layout_width="230dp"
-        android:layout_height="45dp"
-        android:background="@drawable/edit_bg"
-        android:hint="请输入验证码"
-        android:text=""
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
-
-    <EditText
-        android:id="@+id/nickName"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:background="@drawable/edit_bg"
-        android:hint="请输入昵称"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+    tools:context=".Change">
 
     <Button
-        android:id="@+id/register_Button"
+        android:id="@+id/ch_Button"
         android:layout_width="250dp"
         android:layout_height="45dp"
-        android:text="注册"
+        android:text="提  交"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.724" />
-
-    <Button
-        android:id="@+id/getVerifyCode"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:text="获取验证码"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/register_verifyCode"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.711" />
 
     <EditText
-        android:id="@+id/register_password"
+        android:id="@+id/ch_password"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:background="@drawable/edit_bg"
@@ -94,20 +33,51 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478"
+        app:layout_constraintVertical_bias="0.535"
         tools:ignore="Deprecated" />
 
-    <TextView
-        android:id="@+id/register_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textColor="#CCFFFFFF"
-        android:textSize="50sp"
+    <EditText
+        android:id="@+id/change_verifyCode"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edit_bg"
+        android:hint="请输入验证码"
+        android:text=""
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.435" />
 
+    <Button
+        android:id="@+id/getVerifyCode2"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:text="获取验证码"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/change_verifyCode"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <EditText
+        android:id="@+id/ch_phone"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edit_bg"
+        android:hint="请输入手机号"
+        android:inputType="phone"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335" />
 </androidx.constraintlayout.widget.ConstraintLayout>
