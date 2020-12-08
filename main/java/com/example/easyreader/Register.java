@@ -100,7 +100,8 @@ public class Register extends AppCompatActivity {
                             System.out.println(result);
                             br.close();
                             JsonUtils_login jsonUtils_login=new JsonUtils_login();
-                            msg.obj=jsonUtils_login.parseLoginStateFromJson(result);
+                            Login_state login_state=jsonUtils_login.parseLoginStateFromJson(result);
+                            msg.obj=login_state.getMsg();
                             mHandler.sendMessage(msg);
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
@@ -116,7 +117,8 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String phoneNumber=register_phonenumber.getText().toString();
-                uurl = new String("http://192.168.2.130:3000/user/user/sendSMS?phone=");
+                String uuurl = getString(R.string.Server_IP_Port);
+                uurl = uuurl+"/user/user/sendSMS?phone=";
                 uurl+=phoneNumber;
                 uurl+="&TemplateCode=1";
 
@@ -140,7 +142,8 @@ public class Register extends AppCompatActivity {
                             System.out.println(result);
                             br.close();
                             JsonUtils_login jsonUtils_login=new JsonUtils_login();
-                            msg.obj=jsonUtils_login.parseLoginStateFromJson(result);
+                            Login_state login_state=jsonUtils_login.parseLoginStateFromJson(result);
+                            msg.obj=login_state.getMsg();
                             mHandler.sendMessage(msg);
                         } catch (MalformedURLException e) {
                             e.printStackTrace();

@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +25,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".history"></activity>
+        <activity android:name=".Change"></activity>
+        <activity android:name=".history" />
         <activity android:name=".health_report" />
         <activity android:name=".ChangeProfile" />
         <activity android:name=".ChangeInfo_sign" />
@@ -44,18 +45,15 @@
         <activity android:name=".learning" />
         <activity android:name=".learning_share" />
         <activity android:name=".action" />
-        <activity android:name=".work" />
         <activity android:name=".action_detail" />
-        <activity android:name=".news" />
-        <activity android:name=".news_detail" />
-        <activity android:name=".Welcome" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="com.Amap.api.v2.apikey"

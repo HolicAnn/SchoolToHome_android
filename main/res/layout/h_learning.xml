@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#E8E8E8"
     tools:context=".learning">
 
     <TextView
@@ -19,5 +20,5 @@
     <ListView
         android:id="@+id/lt1"
         android:layout_width="match_parent"
-        android:layout_height="604dp"></ListView>
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>

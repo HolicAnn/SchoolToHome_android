@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,7 +28,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,7 +61,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
 
     private Handler mHandler1 = new Handler() {
         public void handleMessage(Message msg) {
-            nickname = getView().findViewById(R.id.nickname);
+            nickname = getView().findViewById(R.id.schoolname);
             //status.setText(Html.fromHtml(msg.obj.toString()));
             //Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
             String str = msg.obj.toString();
@@ -78,7 +76,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
     };
     private Handler mHandler2 = new Handler() {
         public void handleMessage(Message msg) {
-            qm = getView().findViewById(R.id.qianming);
+            qm = getView().findViewById(R.id.schoolmemo);
             //status.setText(Html.fromHtml(msg.obj.toString()));
             //Toast.makeText(Login.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
             String str = msg.obj.toString();
@@ -204,7 +202,9 @@ public class m_MyInfoAndSettingFragment extends Fragment {
                     startActivity(intent);
                 }
                 if (arg2 == 1) {
-                    Toast.makeText(getActivity(), "This is Item 1", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "This is Item 1", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(getActivity(), Change.class);
+                    startActivity(intent);
                 }
                 if (arg2 == 2) {
                     //Toast.makeText(getActivity(), "This is Item 2", Toast.LENGTH_SHORT).show();

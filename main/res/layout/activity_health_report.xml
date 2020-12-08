@@ -54,14 +54,14 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/textView44"
+            android:id="@+id/textView43"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="是否经过风险地区："
-            android:textSize="18sp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:layout_marginLeft="15dp"/>
+            android:text="是否有感冒症状："
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/h"
@@ -81,24 +81,24 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/textView45"
+            android:id="@+id/textView44"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="是否接触过感染者："
-            android:textSize="18sp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:layout_marginLeft="15dp"/>
+            android:text="是否经过风险地区："
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/h2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="是或否"
-            android:textSize="18sp"
             android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:layout_marginRight="15dp"/>
+            android:hint="没有或有"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,24 +108,24 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/textView43"
+            android:id="@+id/textView45"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="是否有感冒症状："
-            android:textSize="18sp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:layout_marginLeft="15dp"/>
+            android:text="是否接触过感染者："
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="是或否"
-            android:textSize="18sp"
             android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:layout_marginRight="15dp"/>
+            android:hint="没有或有"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout

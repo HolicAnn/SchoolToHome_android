@@ -3,6 +3,8 @@ package com.example.easyreader;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +12,8 @@ import android.os.TestLooperManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,7 +35,7 @@ public class Login extends AppCompatActivity {
 
     private Button btnLogin;
     private EditText login_account, login_password;
-    private TextView status;
+    private TextView status,register,resetpwd;
     private String uurl;
     private URL url;
     private HttpURLConnection urlConnection = null;
@@ -52,7 +56,25 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        setStatusBarFullTransparent();
+        register=findViewById(R.id.textView48);
+        resetpwd=findViewById(R.id.textView49);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Login.this,Register.class);
+                startActivity(intent);
+                Login.this.finish();
+            }
+        });
+        resetpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Login.this,Change.class);
+                startActivity(intent);
+                Login.this.finish();
+            }
+        });
 
         Intent intent = getIntent();
         String msg1 = intent.getStringExtra("phoneNumber");
@@ -145,5 +167,17 @@ public class Login extends AppCompatActivity {
                 }).start();
             }
         });
+    }
+    protected void setStatusBarFullTransparent() {
+        if (Build.VERSION.SDK_INT >= 21) {//21表示5.0
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
     }
 }
