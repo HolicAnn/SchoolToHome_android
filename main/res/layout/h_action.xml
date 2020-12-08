@@ -7,13 +7,18 @@
     tools:context=".action">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FF9800" />
+
+    <TextView
         android:id="@+id/text_action"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/blue"
+        android:background="#FF9800"
         android:gravity="center"
         android:text="活动探索🎡"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <ListView

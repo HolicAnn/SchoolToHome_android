@@ -3,12 +3,16 @@ package com.example.easyreader;
 import android.app.Service;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -42,7 +46,7 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
+        setStatusBarFullTransparent();
         final Vibrator vib = (Vibrator) this.getSystemService(Service.VIBRATOR_SERVICE);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -77,7 +81,7 @@ public class SignIn extends AppCompatActivity {
                 cal.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 
                 year = String.valueOf(cal.get(Calendar.YEAR));
-                month = String.valueOf(cal.get(Calendar.MONTH))+1;
+                month = String.valueOf(cal.get(Calendar.MONTH)+1);
                 day = String.valueOf(cal.get(Calendar.DATE));
                 if (cal.get(Calendar.AM_PM) == 0)
                     hour = String.valueOf(cal.get(Calendar.HOUR));
@@ -175,5 +179,18 @@ public class SignIn extends AppCompatActivity {
         aMap.clear();
         CameraUpdate cu=CameraUpdateFactory.changeLatLng(pos);
         aMap.moveCamera(cu);
+    }
+
+    protected void setStatusBarFullTransparent() {
+        if (Build.VERSION.SDK_INT >= 21) {//21表示5.0
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
     }
 }

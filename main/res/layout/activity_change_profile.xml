@@ -19,7 +19,7 @@
         app:srcCompat="@mipmap/pic10" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cfg"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="从相册选择"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.48" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/takephoto"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="拍照"

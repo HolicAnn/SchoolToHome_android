@@ -132,13 +132,15 @@ public class h_HomePageFragment extends Fragment {
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "这是功能3", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "这是功能3", Toast.LENGTH_SHORT).show();
+
             }
         });
         ib4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "这是功能4", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), learning.class);
+                startActivity(intent);
             }
         });
         ib5.setOnClickListener(new View.OnClickListener() {
@@ -172,22 +174,22 @@ public class h_HomePageFragment extends Fragment {
                 Toast.makeText(getActivity(), "正在拨打电话...", Toast.LENGTH_SHORT).show();
             }
         });
-        ib9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), learning.class);
-                startActivity(intent);
-            }
-        });
-        ib10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), action.class);
-                startActivity(intent);
-            }
-        });
+//        ib9.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getActivity(), learning.class);
+//                startActivity(intent);
+//            }
+//        });
+//        ib10.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getActivity(), action.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 
@@ -201,8 +203,8 @@ public class h_HomePageFragment extends Fragment {
         ib6=getView().findViewById(R.id.imageButton6);
         ib7=getView().findViewById(R.id.imageButton7);
         ib8=getView().findViewById(R.id.imageButton8);
-        ib9=getView().findViewById(R.id.imageButton9);
-        ib10=getView().findViewById(R.id.imageButton10);
+        //ib9=getView().findViewById(R.id.imageButton9);
+        //ib10=getView().findViewById(R.id.imageButton10);
 
 //        webView = getView().findViewById(R.id.webview);
 //        webView.loadUrl("http://news.cyol.com/node_67071.htm");
