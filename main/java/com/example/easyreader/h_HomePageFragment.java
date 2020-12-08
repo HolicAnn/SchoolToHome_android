@@ -222,25 +222,26 @@ public class h_HomePageFragment extends Fragment {
         ib7=getView().findViewById(R.id.imageButton7);
         ib8=getView().findViewById(R.id.imageButton8);
 
-        ViewPager viewPager1 = getView().findViewById(R.id.viewpager_home);
-        List<View> views = new ArrayList<View>();
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
+//        ViewPager viewPager1 = getView().findViewById(R.id.viewpager_home);
+//        List<View> views = new ArrayList<View>();
+//        LayoutInflater inflater = LayoutInflater.from(getActivity());
+//
+//        View view1 = inflater.inflate(R.layout.h1, null);
+//        View view2 = inflater.inflate(R.layout.h2, null);
+//        View view3 = inflater.inflate(R.layout.h3, null);
+//
+//        views.add(view1);
+//        views.add(view2);
+//        views.add(view3);
+//
+//        viewPager1.setAdapter(new HomePagerAdapter(views));
+//        //ib9=getView().findViewById(R.id.imageButton9);
+//        //ib10=getView().findViewById(R.id.imageButton10);
+//        View view_h1 = View.inflate(getActivity(), R.layout.h1, null);
 
-        View view1 = inflater.inflate(R.layout.h1, null);
-        View view2 = inflater.inflate(R.layout.h2, null);
-        View view3 = inflater.inflate(R.layout.h3, null);
-
-        views.add(view1);
-        views.add(view2);
-        views.add(view3);
-
-        viewPager1.setAdapter(new HomePagerAdapter(views));
-        //ib9=getView().findViewById(R.id.imageButton9);
-        //ib10=getView().findViewById(R.id.imageButton10);
-        View view_h1 = View.inflate(getActivity(), R.layout.h1, null);
-
-        webView_h1 = view_h1.findViewById(R.id.webView_h1);
-        webView_h1.loadUrl("http://www.bing.com");
+        //webView_h1 = view_h1.findViewById(R.id.webView_h1);
+        webView_h1 = getView().findViewById(R.id.webView_h1);
+        webView_h1.loadUrl("https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_3");
         webView_h1.getSettings().setJavaScriptEnabled(true);
         webView_h1.setWebViewClient(new WebViewClient());
         webView_h1.getSettings().setLoadWithOverviewMode(true);

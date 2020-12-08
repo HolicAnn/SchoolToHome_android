@@ -337,11 +337,17 @@
             android:layout_height="20dp"
             android:text="    Pictures from Photographers"/>
 
-        <androidx.viewpager.widget.ViewPager
+        <WebView
+            android:id="@+id/webView_h1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"/>
+
+        <!--<androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp" />
+            android:layout_margin="3dp" />-->
 
     </LinearLayout>
 
