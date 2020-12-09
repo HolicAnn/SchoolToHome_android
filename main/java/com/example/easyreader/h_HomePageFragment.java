@@ -138,14 +138,19 @@ public class h_HomePageFragment extends Fragment {
         ib2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "这是功能2", Toast.LENGTH_SHORT).show();
+                Intent intent = null;
+                intent = new Intent(getActivity(), news.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), "这是功能2", Toast.LENGTH_SHORT).show();
             }
         });
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getActivity(), "这是功能3", Toast.LENGTH_SHORT).show();
-
+                Intent intent = null;
+                intent = new Intent(getActivity(), work.class);
+                startActivity(intent);
             }
         });
         ib4.setOnClickListener(new View.OnClickListener() {
