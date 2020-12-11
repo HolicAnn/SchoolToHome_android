@@ -29,20 +29,13 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/new_detail_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/new_detail_msg"
-                android:layout_width="350dp"
-                android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"/>
 
-            <TextView
-                android:id="@+id/new_detail_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent" />
         </LinearLayout>
 
     </LinearLayout>

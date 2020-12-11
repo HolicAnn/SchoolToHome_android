@@ -1,5 +1,6 @@
 package com.example.easyreader;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Vibrator;
 import android.telecom.TelecomManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,10 +127,11 @@ public class h_HomePageFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         initHomePage();
-
+        final Vibrator vib = (Vibrator) getActivity().getSystemService(Service.VIBRATOR_SERVICE);
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 Intent intent = null;
                 intent = new Intent(getActivity(), h_CheckTable.class);
                 startActivity(intent);
@@ -138,6 +141,7 @@ public class h_HomePageFragment extends Fragment {
         ib2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 Intent intent = null;
                 intent = new Intent(getActivity(), news.class);
                 startActivity(intent);
@@ -148,6 +152,7 @@ public class h_HomePageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getActivity(), "这是功能3", Toast.LENGTH_SHORT).show();
+                vib.vibrate(60);
                 Intent intent = null;
                 intent = new Intent(getActivity(), work.class);
                 startActivity(intent);
@@ -156,6 +161,7 @@ public class h_HomePageFragment extends Fragment {
         ib4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 Intent intent = new Intent(getActivity(), learning.class);
                 startActivity(intent);
             }
@@ -163,6 +169,7 @@ public class h_HomePageFragment extends Fragment {
         ib5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 Intent intent = null;
                 intent = new Intent(getActivity(), health_report.class);
                 startActivity(intent);
@@ -172,6 +179,7 @@ public class h_HomePageFragment extends Fragment {
         ib6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 Intent intent = null;
                 intent = new Intent(getActivity(), SignIn.class);
                 startActivity(intent);
@@ -181,12 +189,14 @@ public class h_HomePageFragment extends Fragment {
         ib7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 Toast.makeText(getActivity(), "这是功能7", Toast.LENGTH_SHORT).show();
             }
         });
         ib8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vib.vibrate(60);
                 callPhone();
                 Toast.makeText(getActivity(), "正在拨打电话...", Toast.LENGTH_SHORT).show();
             }
@@ -214,9 +224,9 @@ public class h_HomePageFragment extends Fragment {
 
         schoolname=getView().findViewById(R.id.schoolname);
         schoolmemo=getView().findViewById(R.id.schoolmemo);
-        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.likai);
-        schoolname.setTypeface(typeface);
-        schoolmemo.setTypeface(typeface);
+//        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.likai);
+//        schoolname.setTypeface(typeface);
+//        schoolmemo.setTypeface(typeface);
 
         ib1=getView().findViewById(R.id.imageButton);
         ib2=getView().findViewById(R.id.imageButton2);

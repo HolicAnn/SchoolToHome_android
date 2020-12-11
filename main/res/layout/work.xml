@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EDEDED"
     android:orientation="vertical"
     tools:context=".learning">
 
     <TextView
         android:id="@+id/text_news"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/blue"
+        android:layout_height="75dp"
+        android:background="#AA7DFA"
         android:gravity="center"
         android:text="作业"
         android:textColor="@color/black"
@@ -19,5 +20,5 @@
     <ListView
         android:id="@+id/work_list"
         android:layout_width="match_parent"
-        android:layout_height="604dp"></ListView>
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>

@@ -8,17 +8,17 @@
     <TextView
         android:id="@+id/action_detail_text1"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:text="活动详情" />
 
     <TextView
         android:id="@+id/action_detail_text2"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:text="--------------------------------------------------------------------------------------------------------" />
+        android:gravity="center_horizontal"
+        android:text="-----------------------------------------------------------------------------------------" />
 
     <TextView
         android:id="@+id/action_detail_title"

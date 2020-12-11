@@ -268,7 +268,7 @@ public class m_MyInfoAndSettingFragment extends Fragment {
         hashMap3.put("itemName", "历史记录");
         arrayList.add(hashMap3);
         hashMap5.put("image", R.mipmap.faq);
-        hashMap5.put("itemName", "常见问题");
+        hashMap5.put("itemName", "技术文档");
         arrayList.add(hashMap5);
         hashMap4.put("image", R.mipmap.about);
         hashMap4.put("itemName", "关于");

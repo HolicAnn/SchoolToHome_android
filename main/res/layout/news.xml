@@ -7,10 +7,16 @@
     tools:context=".learning">
 
     <TextView
+        android:id="@+id/textView50"
+        android:layout_width="match_parent"
+        android:background="#AA7DFA"
+        android:layout_height="10dp" />
+
+    <TextView
         android:id="@+id/text_news"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/blue"
+        android:layout_height="60dp"
+        android:background="#AA7DFA"
         android:gravity="center"
         android:text="通知"
         android:textColor="@color/black"
@@ -19,5 +25,5 @@
     <ListView
         android:id="@+id/new_list"
         android:layout_width="match_parent"
-        android:layout_height="604dp"></ListView>
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>

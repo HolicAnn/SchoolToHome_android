@@ -1,10 +1,12 @@
 package com.example.easyreader;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -45,14 +47,18 @@ public class JiaXiaoTong extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup Group, int checkedId) {
                 int index=0;
+                final Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
                 switch (checkedId){
                     case R.id.rbbookShelf:
+                        vib.vibrate(75);
                         index=0;
                         break;
                     case R.id.rbonLineStore:
+                        vib.vibrate(75);
                         index=1;
                         break;
                     case R.id.rbmyInfoAndSetting:
+                        vib.vibrate(75);
                         index=2;
                         break;
                     /*case R.id.rbProfile:
