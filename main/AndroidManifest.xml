@@ -25,7 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/NoTitle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Change"></activity>
+        <activity android:name=".n"
+            android:theme="@style/AboutTheme"></activity>
+        <activity android:name=".notice" />
+        <activity android:name=".Change" />
         <activity android:name=".history" />
         <activity android:name=".health_report" />
         <activity android:name=".ChangeProfile" />
@@ -56,7 +59,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+
+        <service android:name=".Timer">
+            <intent-filter>
+                <action android:name="com.example.easyreader.Timer" />
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="com.Amap.api.v2.apikey"

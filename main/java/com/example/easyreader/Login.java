@@ -154,9 +154,14 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = share.edit();
                             String str = "data_id=" + jsonUtils_login.parseLoginStateFromJson(result).getData();
                             editor.putString("data_id", str);
+                            editor.putString("music", "1");
                             editor.putString("username", account);
                             editor.putString("password", password);
                             editor.commit();
+                            Intent intent1=new Intent();
+                            intent1.setAction("com.example.easyreader.Timer");
+                            intent1.setPackage(getPackageName());
+                            startService(intent1);
 
                         } catch (MalformedURLException e) {
                             e.printStackTrace();

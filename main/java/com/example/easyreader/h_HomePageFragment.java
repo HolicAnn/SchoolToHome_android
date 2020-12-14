@@ -190,7 +190,10 @@ public class h_HomePageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 vib.vibrate(60);
-                Toast.makeText(getActivity(), "这是功能7", Toast.LENGTH_SHORT).show();
+                Intent intent = null;
+                intent = new Intent(getActivity(), notice.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), "这是功能7", Toast.LENGTH_SHORT).show();
             }
         });
         ib8.setOnClickListener(new View.OnClickListener() {
